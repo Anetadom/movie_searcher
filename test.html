@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  </head>
+  <body>
+    <div class="splide">
+        <div class="splide__track">
+            <div class="splide__list">
+                <div class="splide__slide">
+                    <div class="img__box">
+                        <img src="./assets/backgroundimg0.jpg" alt="">
+                    </div>
+                </div>
+                <div class="splide__slide">
+                    <div class="img__box">
+                        <img src="./assets/backgroundimg0.jpg" alt="">
+                    </div>
+                </div>
+                <div class="splide__slide">
+                    <div class="img__box">
+                        <img src="./assets/backgroundimg0.jpg" alt="">
+                    </div>
+                </div>
+                <div class="splide__slide">
+                    <div class="img__box">
+                        <img src="./assets/backgroundimg4.jpg" alt="">
+                    </div>
+                </div>
+                <div class="splide__slide">
+                    <div class="img__box">
+                        <img src="./assets/backgroundimg4.jpg" alt="">
+                    </div>
+                </div>
+                <div class="splide__slide">
+                    <div class="img__box">
+                        <img src="./assets/backgroundimg0.jpg" alt="">
+                    </div>
+                </div>
+                <div class="splide__slide">
+                    <div class="img__box">
+                        <img src="./assets/backgroundimg0.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+var splide = new Splide( '.splide', {
+  perPage: 3,
+  gap    : '10rem',
+  breakpoints: {
+    640: {
+      perPage: 2,
+      gap    : '.7rem',
+      height : '6rem',
+    },
+    480: {
+      perPage: 1,
+      gap    : '.7rem',
+      height : '6rem',
+    },
+  },
+} );
+
+splide.mount();
+    </script>
+  </body>
+</html>

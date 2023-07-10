@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js"></script>
+    <script
+      src="https://kit.fontawesome.com/e0d028b2fd.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="
+    https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
+    "></script>
+    <link
+      href="
+    https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
+    "
+      rel="stylesheet"
+    />
+  </head>
+
+  <body onload="getRandomImg()" onload="movieTrending()">
+    
+    <nav>
+      <div class="nav__container">
+        <figure class="nav__logo--wrapper">
+          <h1 class="nav__logo--title gradient">TOP MOVIES</h1>
+        </figure>
+        <ul class="nav__links">
+          <li class="nav__link">
+            <a href="" class="nav__link--text gradient">Movies</a>
+          </li>
+          <li class="nav__link">
+            <a href="" class="nav__link--text gradient">TV Shows</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <section id="header">
+        <div class="header__container">
+          <div class="row">
+            <div class="header__description--wrapper">
+              <h1 class="header__title">Welcome</h1>
+              <h2 class="header__subtitle">
+                Millions of movies and TV shows to discover.<br />
+                Explore now
+              </h2>
+            </div>
+            <div class="header__search--wrapper">
+              <input
+                type="text"
+                name=""
+                id=""
+                class="header__search"
+                placeholder="Search for movies and TV shows"
+              />
+              <button class="header__search--button">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="trendingmovies">
+        <div class="container trending__container">
+          <div class="row">
+            <h1 class="container__title">Trending movies</h1>
+            <div class="splide">
+              <div class="splide__track">
+                <div class="splide__list movies__list">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="addSplide"></div>
+        <script type="text/javascript">
+         setTimeout(  (var splide = new Splide (".splide", {
+              perPage: 4,
+              perMove: 1,
+              pagination: false,
+              gap: "20px",
+              breakpoints: {
+                768: {
+                  perPage: 2,
+                  gap: ".7rem",
+                },
+                480: {
+                  perPage: 1,
+                  gap: "0rem",
+                },
+              },
+            })
+  
+            splide.mount();),5000);
+          </script>
+       
+   
+      </section>
+    </main>
+  </body>
+</html>
