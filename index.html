@@ -22,8 +22,8 @@
   </head>
 
   <body onload="getRandomImg()" onload="movieTrending()">
-    
     <nav>
+        <div class="row"></div>
       <div class="nav__container">
         <figure class="nav__logo--wrapper">
           <h1 class="nav__logo--title gradient">TOP MOVIES</h1>
@@ -37,6 +37,7 @@
           </li>
         </ul>
       </div>
+      </nav>
     </nav>
     <main>
       <section id="header">
@@ -64,41 +65,29 @@
           </div>
         </div>
       </section>
-      <section id="trendingmovies">
-        <div class="container trending__container">
+      <section id="trending__movies">
+        <div class="container trending__container--movies">
           <div class="row">
-            <h1 class="container__title">Trending movies</h1>
-            <div class="splide">
+            <h1 class="container__title container__title--movies">Trending movies</h1>
+            <div id="carousel1" class="splide">
               <div class="splide__track">
-                <div class="splide__list movies__list">
-                </div>
+                <div class="splide__list movies__list"></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="addSplide"></div>
-        <script type="text/javascript">
-         setTimeout(  (var splide = new Splide (".splide", {
-              perPage: 4,
-              perMove: 1,
-              pagination: false,
-              gap: "20px",
-              breakpoints: {
-                768: {
-                  perPage: 2,
-                  gap: ".7rem",
-                },
-                480: {
-                  perPage: 1,
-                  gap: "0rem",
-                },
-              },
-            })
-  
-            splide.mount();),5000);
-          </script>
-       
-   
+      </section>
+      <section id="trending__shows">
+        <div class="container trending__container--shows">
+          <div class="row">
+            <h1 class="container__title white__color">Trending TV Shows</h1>
+            <div id="carousel2" class="splide">
+              <div class="splide__track">
+                <div class="splide__list shows__list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   </body>
