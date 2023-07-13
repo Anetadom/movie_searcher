@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script ></script>
+    <title>Document</title>
+    <script src="./app_movies.js"></script>
+</head>
+<body>
+    <body>
+        <nav>
+            <div class="row"></div>
+          <div class="nav__container">
+            <figure class="nav__logo--wrapper">
+              <h1 class="nav__logo--title gradient">TOP MOVIES</h1>
+            </figure>
+            <ul class="nav__links">
+              <li class="nav__link">
+                <a href="./movies.html" class="nav__link--text gradient">Movies</a>
+              </li>
+              <li class="nav__link">
+                <a href="" class="nav__link--text gradient">TV Shows</a>
+              </li>
+            </ul>
+          </div>
+          </nav>
+        </nav>
+        <main>
+            <section id="filter">
+                <div class="container">
+                        <div class="filter__content--wrapper">
+                            <div class="filter__parameters">
+                                <div class="filter__wrapper">
+                                    <p class="filter__title">Sort by</p>
+                                    <select name="sort-by" id="sort-by" class="filter__sort-by">
+                                        <option class="filter__sort-by--option" value="" disabled selected>Sort</option>
+                                        <option class="filter__sort-by--option" value="rating_descending">Rating Descending</option>
+                                        <option class="filter__sort-by--option" value="rating_ascending">Rating Ascending</option>
+                                        <option class="filter__sort-by--option" value="popularity_descending">Popularity Descending</option>
+                                        <option class="filter__sort-by--option" value="popularity_ascending">Popularity Ascending</option>
+                                        <option class="filter__sort-by--option" value="release_date">Release Date</option>
+                                        <option class="filter__sort-by--option" value="title">Title (A-Z)</option>
+                                    </select>
+                                </div>
+                                <div class="filter__wrapper">
+                                    <p class="filter__title">Genres</p>
+                                    <ul id="with_genres" class="filter__genres text" name="with_genres[]">
+                                        <li data-value="28" class="no__click" >Action</li>
+                                        <li data-value="12" class="no__click" >Adventure</li>
+                                        <li data-value="16" class="no__click" >Animation</li>
+                                        <li data-value="35" class="no__click" >Comedy</li>
+                                        <li data-value="80" class="no__click" >Crime</li>
+                                        <li data-value="99" class="no__click" >Documentary</li>
+                                        <li data-value="18" class="no__click" >Drama</li>
+                                        <li data-value="10751" class="no__click" >Family</li>
+                                        <li data-value="14" class="no__click" >Fantasy</li>
+                                        <li data-value="36" class="no__click" >History</li>
+                                        <li data-value="27" class="no__click" >Horror</li>
+                                        <li data-value="10402" class="no__click" >Music</li>
+                                        <li data-value="9648" class="no__click" >Mystery</li>
+                                        <li data-value="10749" class="no__click" >Romance</li>
+                                        <li data-value="878" class="no__click" >Science Fiction</li>
+                                        <li data-value="10770" class="no__click" >TV Movie</li>
+                                        <li data-value="53" class="no__click" >Thriller</li>
+                                        <li data-value="10752" class="no__click" >War</li>
+                                        <li data-value="37" class="no__click" >Western</li>
+                                    </ul>  
+                                </div>
+                                <div class="filter__wrapper">
+                                    <p class="filter__title">Release date</p>
+                                    <p class="filter__subtitle">from</p>
+                                    <input type="date">
+                                    <p class="filter__subtitle">to</p>
+                                    <input type="text"  name="" id="">
+                                </div>
+                                <div class="filter__wrapper--last ">
+                                    <p class="filter__title">User Score</p>
+                                    <input type="range" name="" id="">
+
+                                </div>
+                            </div>
+                            <div class="filter__results">
+
+                            </div>
+                        </div>
+                </div>
+            </section>
+        </main>
+</body>
+</html>
