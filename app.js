@@ -2,9 +2,9 @@
 
 const ApiKey = "&api_key=57e2a7b6bb030ad38f924e126dc9e94a";
 const ApiBase = "https://api.themoviedb.org/3/discover/";
-const ApiTrending = 'movie?sort_by=popularity.desc';
+const ApiTrending = 'movie?with_genres=10402';
 const URLTrending = ApiBase + ApiTrending + ApiKey
-const ApiTrendingTV = 'tv?with_origin_country=US&sort_by=popularity.desc';
+const ApiTrendingTV = 'tv?with_origin_country=US&sort_by=popularity.desc&';
 const URLTrendingTV = ApiBase + ApiTrendingTV + ApiKey;
 const ApiImageBase = 'https://image.tmdb.org/t/p/w500/'
 
