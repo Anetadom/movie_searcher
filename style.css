@@ -274,79 +274,167 @@ MOVIES AND TV SHOW PAGE
 
 */
 
-.filter__content--wrapper{
+.filter__content--wrapper {
     width: 100%;
     display: flex;
 }
 
+.conteriner__filter{
+    position: relative;
+}
 
-.filter__parameters{
+.filter__parameters {
+    position: absolute;
+    left:0;
     width: 240px;
     border: solid 1px c1c1c7;
     border-radius: 10px;
-   
     margin-top: 12px;
     box-shadow: 0 0 30px #c1c1c7;
 }
 
-.filter__wrapper{
+.filter__wrapper {
     padding: 8px;
     border-bottom: 0.5px solid #c1c1c7;
 }
 
-.filter__wrapper--last{
+.filter__wrapper--last {
     padding: 8px;
 }
 
-.filter__title{
+.filter__title {
     color: #25274D;
     font-size: 20px;
     font-weight: 500;
-    padding-bottom: 8px ;
+    padding-bottom: 8px;
 }
 
-.filter__subtitle{
-font-size: 14px;
-padding: 6px 0;
-color: #565657;
+.filter__subtitle {
+    font-size: 14px;
+    padding: 6px 0;
+    color: #565657;
 }
 
-.filter__results--wrappper{
+.filter__results--wrappper {
     margin: 12px;
     border: solid 1px;
     width: 100%;
 }
 
-.filter__genres{
+.filter__genres {
     display: flex;
     flex-wrap: wrap;
 }
 
-.filter__sort-by{
+.filter__sort-by {
     width: 100%;
     border-radius: 20px;
     padding: 4px;
 }
 
-.no__click{
+.no__click {
     font-size: 16px;
     padding: 4px 8px;
-    border: 1px solid ;
+    border: 1px solid;
     border-radius: 9999px;
     margin: 4px;
     font-weight: 500;
     cursor: pointer;
+    background-color: white;
 }
 
-.active{
+.active {
     background-color: #262db4;
     box-shadow: 0 0 30px #c1c1c7;
     color: white;
 }
 
-.filter__data{
+.filter__data {
     width: 100%;
     border-radius: 20px;
     padding: 4px;
     border: 1px solid;
 }
+
+/* 
+
+RESULTS OF SEARCH
+
+*/
+
+.results__wrapper {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: calc(100% - 240px);
+    margin-top: 12px;
+    padding: 0 32px;
+}
+
+.result {
+    margin: 0 6px 12px 6px ;
+    position: relative;
+    width: calc(90% / 4);
+    max-height: 450px;
+    border: 0.5px solid #c1c1c7;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 30px #c1c1c7;  
+}
+
+.result__img {
+    width: 100%;
+    transition: all 300ms ease;
+
+
+}
+
+.result__title{
+   font-size: 16px; 
+   font-weight: 500;
+   padding: 3px 6px 0px 6px;
+}
+
+.result__year{
+    font-size: 16px;
+    padding: 6px;
+}
+
+.know-more{
+   display: flex;
+   justify-content: center;
+   text-align: center;
+
+}
+
+.fa-ellipsis-vertical{
+    position: absolute;
+    color: white;
+    width: 48px;
+    font-size: 20px;
+    padding: 12px;
+    border: 2px solid ;
+    border-radius: 100%;
+    background-color: #c1c1c7;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: all 300ms ease;
+}
+
+.result:hover .result__img{
+    filter: blur(3px);
+}
+
+.result:hover .fa-ellipsis-vertical{
+ opacity: 1;
+
+}
+
+
+
+
+

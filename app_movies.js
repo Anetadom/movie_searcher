@@ -14,8 +14,10 @@ function activeGenres(event) {
   // API
 
 const ApiKey = "&api_key=57e2a7b6bb030ad38f924e126dc9e94a";
-const ApiBase = "https://api.themoviedb.org/3/discover/";
-const APIMovieRatingDesc = "sort_by=vote_average.desc";
+const ApiBase = "https://api.themoviedb.org/3/discover/movie?";
+const APIMovieRatingDesc = "sort_by=vote_average.desc&vote_count.gte=500";
+const APIMovieRatingDescURL = ApiBase+APIMovieRatingDesc+ApiKey
 
-console.log(ApiBase+ApiKey+APIMovieRatingDesc)
+
+console.log(APIMovieRatingDescURL)
 

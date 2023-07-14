@@ -1,133 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <script></script>
     <title>Document</title>
     <script src="./app_movies.js"></script>
-</head>
+    <script
+      src="https://kit.fontawesome.com/e0d028b2fd.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<body>
-
+  <body>
     <body>
-        <nav>
-            <div class="row"></div>
-            <div class="nav__container">
-                <figure class="nav__logo--wrapper">
-                    <h1 class="nav__logo--title gradient">TOP MOVIES</h1>
-                </figure>
-                <ul class="nav__links">
-                    <li class="nav__link">
-                        <a href="./movies.html" class="nav__link--text gradient">Movies</a>
-                    </li>
-                    <li class="nav__link">
-                        <a href="" class="nav__link--text gradient">TV Shows</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        </nav>
-        <main>
-            <section id="filter">
-                <div class="container">
-                    <div class="filter__content--wrapper">
-                        <div class="filter__parameters">
-                            <div class="filter__wrapper">
-                                <p class="filter__title">Sort by</p>
-                                <select name="sort-by" id="sort-by" class="filter__sort-by">
-                                    <option class="filter__sort-by--option" value="rating_descending">Rating Descending
-                                    </option>
-                                    <option class="filter__sort-by--option" value="rating_ascending">Rating Ascending
-                                    </option>
-                                    <option class="filter__sort-by--option" value="popularity_descending">Popularity
-                                        Descending</option>
-                                    <option class="filter__sort-by--option" value="popularity_ascending">Popularity
-                                        Ascending</option>
-                                    <option class="filter__sort-by--option" value="release_date">Release Date</option>
-                                    <option class="filter__sort-by--option" value="title">Title (A-Z)</option>
-                                </select>
-                            </div>
-                            <div class="filter__wrapper">
-                                <p class="filter__title">Genres</p>
-                                <ul id="with_genres" class="filter__genres text" name="with_genres[]">
-                                    <li data-value="28"></li> <button class="no__click "
-                                        onclick="activeGenres(event)">Action</button></li>
-                                    <li data-value="12"></button></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Adventure</button></li>
-                                    <li data-value="16"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Animation</button></li>
-                                    <li data-value="35"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Comedy</button></li>
-                                    <li data-value="80"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Crime</button></li>
-                                    <li data-value="99"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Documentary</button></li>
-                                    <li data-value="18"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Drama</button></li>
-                                    <li data-value="10751"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Family</button></li>
-                                    <li data-value="14"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Fantasy</button></li>
-                                    <li data-value="36"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">History</button></li>
-                                    <li data-value="27"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Horror</button></li>
-                                    <li data-value="10402"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Music</button></li>
-                                    <li data-value="9648"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Mystery</button></li>
-                                    <li data-value="10749"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Romance</button></li>
-                                    <li data-value="878"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Science Fiction</button></li>
-                                    <li data-value="10770"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">TV Movie</button></li>
-                                    <li data-value="53"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Thriller</button></li>
-                                    <li data-value="10752"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">War</button></li>
-                                    <li data-value="37"></li> <button class="no__click"
-                                        onclick="activeGenres(event)">Western</button></li>
-                                </ul>
-                            </div>
-                            <div class="filter__wrapper">
-                                <p class="filter__title">Release date</p>
-                                <p class="filter__subtitle">from</p>
-                                <input type="date" class="filter__data">
-                                <p class="filter__subtitle">to</p>
-                                <input type="date" class="filter__data">
-                            </div>
-                            <div class="filter__wrapper--last ">
-                                <p class="filter__title">User Score</p>
-                                <input type="range" min="0" max="10" name="" id="">
-                            </div>
-                        </div>
-                        <div class="filter__results--wrapper">
-                            <div class="filter__result">
-                                <div class="main__box">
-                                    <figure class="main__img--wrapper">
-                                        <img src="./assets/backgroundimg0.jpg" alt="" class="main__img"/>
-                                    </figure>
-                                      <div>
-                                        <p class="main__title">${movie.title}</p>
-                                        <p class="main__year">${releaseYear}</p>
-                                      </div>
-                                      <div class="main__description--wrapper">
-                                        <p class="main__description">${movie.overview}</p>
-                                      </div>
-                                    </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter__movies">
-                    </div>
+      <nav>
+        <div class="row"></div>
+        <div class="nav__container">
+          <figure class="nav__logo--wrapper">
+            <h1 class="nav__logo--title gradient">TOP MOVIES</h1>
+          </figure>
+          <ul class="nav__links">
+            <li class="nav__link">
+              <a href="./movies.html" class="nav__link--text gradient"
+                >Movies</a
+              >
+            </li>
+            <li class="nav__link">
+              <a href="" class="nav__link--text gradient">TV Shows</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main>
+        <section id="filter">
+          <div class="container conteriner__filter">
+            
+              <div class="filter__parameters">
+                <div class="filter__wrapper">
+                  <p class="filter__title">Sort by</p>
+                  <select name="sort-by" id="sort-by" class="filter__sort-by">
+                    <option
+                      class="filter__sort-by--option"
+                      value="rating_descending"
+                    >
+                      Rating Descending
+                    </option>
+                    <option
+                      class="filter__sort-by--option"
+                      value="rating_ascending"
+                    >
+                      Rating Ascending
+                    </option>
+                    <option
+                      class="filter__sort-by--option"
+                      value="popularity_descending"
+                    >
+                      Popularity Descending
+                    </option>
+                    <option
+                      class="filter__sort-by--option"
+                      value="popularity_ascending"
+                    >
+                      Popularity Ascending
+                    </option>
+                    <option
+                      class="filter__sort-by--option"
+                      value="release_date"
+                    >
+                      Release Date
+                    </option>
+                    <option class="filter__sort-by--option" value="title">
+                      Title (A-Z)
+                    </option>
+                  </select>
                 </div>
-            </section>
-        </main>
+                <div class="filter__wrapper">
+                  <p class="filter__title">Genres</p>
+                  <ul
+                    id="with_genres"
+                    class="filter__genres text"
+                    name="with_genres[]"
+                  >
+                    <li data-value="28">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Action
+                      </button>
+                    </li>
+                    <li data-value="12">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Adventure
+                      </button>
+                    </li>
+                    <li data-value="16">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Animation
+                      </button>
+                    </li>
+                    <li data-value="35">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Comedy
+                      </button>
+                    </li>
+                    <li data-value="80">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Crime
+                      </button>
+                    </li>
+                    <li data-value="99">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Documentary
+                      </button>
+                    </li>
+                    <li data-value="18">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Drama
+                      </button>
+                    </li>
+                    <li data-value="10751">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Family
+                      </button>
+                    </li>
+                    <li data-value="14">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Fantasy
+                      </button>
+                    </li>
+                    <li data-value="36">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        History
+                      </button>
+                    </li>
+                    <li data-value="27">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Horror
+                      </button>
+                    </li>
+                    <li data-value="10402">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Music
+                      </button>
+                    </li>
+                    <li data-value="9648">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Mystery
+                      </button>
+                    </li>
+                    <li data-value="10749">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Romance
+                      </button>
+                    </li>
+                    <li data-value="878">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Science Fiction
+                      </button>
+                    </li>
+                    <li data-value="10770">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        TV Movie
+                      </button>
+                    </li>
+                    <li data-value="53">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Thriller
+                      </button>
+                    </li>
+                    <li data-value="10752">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        War
+                      </button>
+                    </li>
+                    <li data-value="37">
+                      <button class="no__click" onclick="activeGenres(event)">
+                        Western
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="filter__wrapper">
+                  <p class="filter__title">Release date</p>
+                  <p class="filter__subtitle">from</p>
+                  <input type="date" class="filter__data" />
+                  <p class="filter__subtitle">to</p>
+                  <input type="date" class="filter__data" />
+                </div>
+                <div class="filter__wrapper--last">
+                  <p class="filter__title">User Score</p>
+                  <input type="range" min="0" max="10" name="" id="" />
+                </div>
+              </div>
+              <div class="results__wrapper">
+                <div class="result">
+                  <figure class="result__img--wrapper">
+                    <img
+                      src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+                      alt=""
+                      class="result__img"
+                    />
+                  </figure>
+                  <div>
+                    <p class="result__title">The Godfather</p>
+                    <p class="result__year">1972</p>
+                  </div>
+                  <figure class="know-more">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </figure>
+                </div>
+                <div class="result">
+                  <figure class="result__img--wrapper">
+                    <img
+                      src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+                      alt=""
+                      class="result__img"
+                    />
+                  </figure>
+                  <div>
+                    <p class="result__title">The Godfather</p>
+                    <p class="result__year">1972</p>
+                  </div>
+                  <figure class="know-more">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </figure>
+                </div>
+                <div class="result">
+                  <figure class="result__img--wrapper">
+                    <img
+                      src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+                      alt=""
+                      class="result__img"
+                    />
+                  </figure>
+                  <div>
+                    <p class="result__title">The Godfather</p>
+                    <p class="result__year">1972</p>
+                  </div>
+                  <figure class="know-more">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </figure>
+                </div>
+                <div class="result">
+                  <figure class="result__img--wrapper">
+                    <img
+                      src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+                      alt=""
+                      class="result__img"
+                    />
+                  </figure>
+                  <div>
+                    <p class="result__title">The Godfather</p>
+                    <p class="result__year">1972</p>
+                  </div>
+                  <figure class="know-more">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </figure>
+                </div>
+                <div class="result">
+                  <figure class="result__img--wrapper">
+                    <img
+                      src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+                      alt=""
+                      class="result__img"
+                    />
+                  </figure>
+                  <div>
+                    <p class="result__title">The Godfather</p>
+                    <p class="result__year">1972</p>
+                  </div>
+                  <figure class="know-more">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </figure>
+                </div>
+                <div class="result">
+                  <figure class="result__img--wrapper">
+                    <img
+                      src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+                      alt=""
+                      class="result__img"
+                    />
+                  </figure>
+                  <div>
+                    <p class="result__title">The Godfather</p>
+                    <p class="result__year">1972</p>
+                  </div>
+                  <figure class="know-more">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </figure>
+                </div>
+                <div class="result">
+                  <figure class="result__img--wrapper">
+                    <img
+                      src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+                      alt=""
+                      class="result__img"
+                    />
+                  </figure>
+                  <div>
+                    <p class="result__title">The Godfather</p>
+                    <p class="result__year">1972</p>
+                  </div>
+                  <figure class="know-more">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </figure>
+                </div>
+                <div class="result">
+                  <figure class="result__img--wrapper">
+                    <img
+                      src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+                      alt=""
+                      class="result__img"
+                    />
+                  </figure>
+                  <div>
+                    <p class="result__title">The Godfather</p>
+                    <p class="result__year">1972</p>
+                  </div>
+                  <figure class="know-more">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </figure>
+                </div>
+                <div class="result">
+                  <figure class="result__img--wrapper">
+                    <img
+                      src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+                      alt=""
+                      class="result__img"
+                    />
+                  </figure>
+                  <div>
+                    <p class="result__title">The Godfather</p>
+                    <p class="result__year">1972</p>
+                  </div>
+                  <figure class="know-more">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </figure>
+                </div>
+              </div>
+          </div>
+        </section>
+      </main>
     </body>
-
+  </body>
 </html>
