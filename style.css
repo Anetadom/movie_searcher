@@ -368,14 +368,13 @@ RESULTS OF SEARCH
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
     width: calc(100% - 240px);
     margin-top: 12px;
     padding: 0 32px;
 }
 
 .result {
-    margin: 0 6px 12px 6px ;
+    margin: 0 auto;
     position: relative;
     width: calc(90% / 4);
     max-height: 450px;

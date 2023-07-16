@@ -39,7 +39,7 @@
             <div class="filter__parameters">
               <div class="filter__wrapper">
                 <p class="filter__title">Sort by</p>
-                <select name="sort-by" id="sort-by" class="filter__sort-by">
+                <select name="sort-by" id="sort-by" class="filter__sort-by" onchange="sortBy()">
                   <option
                     class="filter__sort-by--option"
                     value="vote_average.desc"
@@ -64,7 +64,7 @@
                   >
                     Popularity Ascending
                   </option>
-                  <option class="filter__sort-by--option" value="primary_release_date">
+                  <option class="filter__sort-by--option" value="primary_release_date.desc">
                     Release Date
                   </option>
                   <option class="filter__sort-by--option" value="title">

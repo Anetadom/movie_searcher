@@ -13,6 +13,7 @@ function collectDataValuesGenre() {
   return dataValuesGenre;
 }
 
+
 //Active Genres
 function activeGenres(event) {
   const button = event.target;
@@ -22,31 +23,36 @@ function activeGenres(event) {
   } else {
     button.classList.add('active');
   }
-
+//zmiany
   const dataValuesGenre = collectDataValuesGenre().join("%20or%20");
-  API(dataValuesGenre);
-}
-
-
-
-async function API(dataValuesGenre) {
-  const ApiKey = "&api_key=57e2a7b6bb030ad38f924e126dc9e94a";
-  const ApiBase = "https://api.themoviedb.org/3/discover/movie?";
-  const APIMovieRatingDesc = "sort_by=vote_average.desc&vote_count.gte=1000&with_genres=";
   const MovieSortBy = document.getElementById("sort-by");
   const MovieSortByValue = MovieSortBy.value;
-  console.log(MovieSortByValue)
-  const APIMovieRatingDescURL = ApiBase + APIMovieRatingDesc + dataValuesGenre + ApiKey;
- 
+  API( MovieSortByValue, dataValuesGenre);
+}
 
+// sort by 
+
+function sortBy(){
+const MovieSortBy = document.getElementById("sort-by");
+const MovieSortByValue = MovieSortBy.value;
+console.log(MovieSortByValue);
+const dataValuesGenre = collectDataValuesGenre().join("%20or%20");
+API( MovieSortByValue, dataValuesGenre)
+}
+
+//API 
+async function API( MovieSortByValue, dataValuesGenre) {
+  const ApiKey = "&api_key=57e2a7b6bb030ad38f924e126dc9e94a";
+  const ApiBase = "https://api.themoviedb.org/3/discover/movie?";
+  const APIMovieRatingDescURL = ApiBase + "sort_by=" + MovieSortByValue +"&vote_count.gte=500&with_genres=" + dataValuesGenre + ApiKey;
   console.log(APIMovieRatingDescURL);
   const moviesTrending = await fetch(APIMovieRatingDescURL);
   const moviesTrendingData = await (moviesTrending.json());
-  console.log(moviesTrending);
   const moviesTrendingList = document.querySelector(".results__wrapper");
   moviesTrendingList.innerHTML = moviesTrendingData.results.map( (movie) => moviesPage(movie)).join("");
 }
 
+//HTML code
 function moviesPage (movie) {
   const ApiImageBase = 'https://image.tmdb.org/t/p/w500/';
   let releaseYear = (new Date(movie.release_date)).getFullYear();
@@ -67,3 +73,9 @@ function moviesPage (movie) {
   </figure>
 </div>`;
 }
+
+//loading 
+document.addEventListener("DOMContentLoaded", function() {
+  const dataValuesGenre = collectDataValuesGenre().join(",");
+  API(dataValuesGenre);
+});
