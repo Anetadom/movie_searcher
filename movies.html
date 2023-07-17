@@ -13,7 +13,7 @@
     ></script>
   </head>
 
-  <body>
+  <body onload="API()">
     <body>
       <nav>
         <div class="row"></div>
@@ -39,7 +39,12 @@
             <div class="filter__parameters">
               <div class="filter__wrapper">
                 <p class="filter__title">Sort by</p>
-                <select name="sort-by" id="sort-by" class="filter__sort-by" onchange="sortBy()">
+                <select
+                  name="sort-by"
+                  id="sort-by"
+                  class="filter__sort-by"
+                  onchange="sortBy()"
+                >
                   <option
                     class="filter__sort-by--option"
                     value="vote_average.desc"
@@ -64,10 +69,16 @@
                   >
                     Popularity Ascending
                   </option>
-                  <option class="filter__sort-by--option" value="primary_release_date.desc">
+                  <option
+                    class="filter__sort-by--option"
+                    value="primary_release_date.desc"
+                  >
                     Release Date
                   </option>
-                  <option class="filter__sort-by--option" value="title">
+                  <option
+                    class="filter__sort-by--option"
+                    value="original_title.asc"
+                  >
                     Title (A-Z)
                   </option>
                 </select>
@@ -177,22 +188,79 @@
                   </li>
                 </ul>
               </div>
-              <div class="filter__wrapper">
+              <div class="filter__wrapper" onchange="dateValue()">
                 <p class="filter__title">Release date</p>
                 <p class="filter__subtitle">from</p>
-                <input type="date" class="filter__data" />
+                <input type="date" class="filter__data older" />
                 <p class="filter__subtitle">to</p>
-                <input type="date" class="filter__data" />
+                <input type="date" class="filter__data newer" />
               </div>
               <div class="filter__wrapper--last">
                 <p class="filter__title">User Score</p>
-                <input type="range" min="0" max="10" name="" id="" />
+                <div class="slider__value">
+                  <h2 id="title-min" class="slider__value--title">0</h2>
+                  <h2 id="title-max" class="slider__value--title">10</h2>
+                </div>
+                <div class="double__slider">
+                  <div class="double__slider--body">
+                    <div class="double__slider--track">
+                      <div class="double__slider--range">
+                        <div
+                          id="dot-left"
+                          class="double__slider--dot double__slider--dot-left"
+                        ></div>
+                        <div
+                          id="dot-right"
+                          class="double__slider--dot double__slider--dot-right"
+                        ></div>
+                      </div>
+                    </div>
+                    <input
+                      id="input-left"
+                      type="range"
+                      class="double__slider"
+                      min="0"
+                      max="10"
+                    />
+                    <input
+                      id="input-right"
+                      type="range"
+                      class="double__slider"
+                      min="0"
+                      max="10"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="results__wrapper">
-            </div>
+            <div class="results__wrapper"></div>
           </div>
         </section>
+        <!-- <section id="modal">
+          <div class="container__modal">
+            <img src="" alt="">
+            <div class="modal__wrapper">
+              <div class="modal__img--wrapper">
+                <img src="https://image.tmdb.org/t/p/w500//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="" class="modal__img" />
+              </div>
+              <div class="modal__content--wrapper">
+                <div class="modal__info">
+                  <h1 class="modal__title">The Godfather</h1>
+                  <h3 class="modal__year">1972</h3>
+                  <h3 class="modal__genres">Action</h3>
+                </div>
+                <div class="modal__ratings">8.7</div>
+                <div class="modal__description">
+                  Spanning the years 1945 to 1955, a chronicle of the fictional
+                  Italian-American Corleone crime family. When organized crime
+                  family patriarch, Vito Corleone barely survives an attempt on
+                  his life, his youngest son, Michael steps in to take care of
+                  the would-be killers, launching a campaign of bloody revenge.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> -->
       </main>
     </body>
   </body>

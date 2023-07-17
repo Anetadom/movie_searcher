@@ -25,7 +25,6 @@ li {
 .row {
     width: 100%;
     max-width: 1000px;
-    padding: 0 30px;
 
 }
 
@@ -274,6 +273,10 @@ MOVIES AND TV SHOW PAGE
 
 */
 
+/* #filter{
+    display: none;
+} */
+
 .filter__content--wrapper {
     width: 100%;
     display: flex;
@@ -281,6 +284,8 @@ MOVIES AND TV SHOW PAGE
 
 .conteriner__filter{
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .filter__parameters {
@@ -374,9 +379,9 @@ RESULTS OF SEARCH
 }
 
 .result {
-    margin: 0 auto;
+    margin: 12px 20px;
     position: relative;
-    width: calc(90% / 4);
+    width: calc((100% - 4 * 40px) / 4);
     max-height: 450px;
     border: 0.5px solid #c1c1c7;
     border-radius: 20px;
@@ -434,6 +439,44 @@ RESULTS OF SEARCH
 }
 
 
+/* 
 
+MODAL 
+
+*/
+
+.container__modal{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.modal__wrapper{
+    background-color: #565657;
+    width: 70vw;
+    max-width: 1000px;
+    z-index: 1000;
+    display: flex;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 0 30px #c1c1c7;
+}
+
+.modal__img--wrapper{
+    width: 30%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.modal__img{
+    width: 100%;
+    height: 100%;
+}
+
+.modal__content--wrapper{
+    width: 70%;
+}
 
 

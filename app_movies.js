@@ -1,18 +1,27 @@
 //Filter Data
+let dataValuesGenre = [];
 
 function collectDataValuesGenre() {
-  const dataValuesGenre = [];
-
+  dataValuesGenre = []
   const buttons = document.querySelectorAll('#with_genres li button');
   buttons.forEach(function(button) {
     if (button.classList.contains('active')) {
       dataValuesGenre.push(button.parentNode.getAttribute('data-value'));
     }
   });
-
-  return dataValuesGenre;
 }
 
+//Relese date
+
+function dateValue(){
+  const MovieSortBy = document.getElementById("sort-by");
+  const MovieSortByValue = MovieSortBy.value;
+  const olderDate = document.querySelector('.older')
+  const newerDate = document.querySelector('.newer')
+  const olderDateValue = olderDate.value 
+  const newerDateValue = newerDate.value
+  API(MovieSortByValue, olderDateValue, newerDateValue)
+}
 
 //Active Genres
 function activeGenres(event) {
@@ -23,28 +32,35 @@ function activeGenres(event) {
   } else {
     button.classList.add('active');
   }
-//zmiany
-  const dataValuesGenre = collectDataValuesGenre().join("%20or%20");
+
+  collectDataValuesGenre();
   const MovieSortBy = document.getElementById("sort-by");
   const MovieSortByValue = MovieSortBy.value;
-  API( MovieSortByValue, dataValuesGenre);
+  const olderDate = document.querySelector('.older');
+  const newerDate = document.querySelector('.newer');
+  const olderDateValue = olderDate.value; 
+  const newerDateValue = newerDate.value;
+  API(MovieSortByValue, olderDateValue, newerDateValue);
 }
 
 // sort by 
-
 function sortBy(){
-const MovieSortBy = document.getElementById("sort-by");
-const MovieSortByValue = MovieSortBy.value;
-console.log(MovieSortByValue);
-const dataValuesGenre = collectDataValuesGenre().join("%20or%20");
-API( MovieSortByValue, dataValuesGenre)
+  const MovieSortBy = document.getElementById("sort-by");
+  const MovieSortByValue = MovieSortBy.value;
+  collectDataValuesGenre();
+
+  const olderDate = document.querySelector('.older');
+  const newerDate = document.querySelector('.newer');
+  const olderDateValue = olderDate.value;
+  const newerDateValue = newerDate.value;
+  API(MovieSortByValue, olderDateValue, newerDateValue);
 }
 
 //API 
-async function API( MovieSortByValue, dataValuesGenre) {
+async function API(MovieSortByValue = "vote_average.desc", olderDateValue = "1900-01-01", newerDateValue = "9999-12-31"){
   const ApiKey = "&api_key=57e2a7b6bb030ad38f924e126dc9e94a";
   const ApiBase = "https://api.themoviedb.org/3/discover/movie?";
-  const APIMovieRatingDescURL = ApiBase + "sort_by=" + MovieSortByValue +"&vote_count.gte=500&with_genres=" + dataValuesGenre + ApiKey;
+  const APIMovieRatingDescURL = ApiBase + "sort_by=" + MovieSortByValue +"&vote_count.gte=500&with_genres=" + dataValuesGenre + "&primary_release_date.gte="+ olderDateValue + "&primary_release_date.lte=" + newerDateValue + ApiKey;
   console.log(APIMovieRatingDescURL);
   const moviesTrending = await fetch(APIMovieRatingDescURL);
   const moviesTrendingData = await (moviesTrending.json());
@@ -76,6 +92,6 @@ function moviesPage (movie) {
 
 //loading 
 document.addEventListener("DOMContentLoaded", function() {
-  const dataValuesGenre = collectDataValuesGenre().join(",");
+  collectDataValuesGenre();
   API(dataValuesGenre);
 });
