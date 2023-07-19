@@ -13,7 +13,6 @@
     ></script>
   </head>
 
-  <body onload="API()">
     <body>
       <nav>
         <div class="row"></div>
@@ -45,6 +44,12 @@
                   class="filter__sort-by"
                   onchange="sortBy()"
                 >
+                <option
+                    class="filter__sort-by--option"  disabled selected value
+            
+                  >
+                    Sort by
+                  </option>
                   <option
                     class="filter__sort-by--option"
                     value="vote_average.desc"

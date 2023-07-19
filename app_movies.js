@@ -11,6 +11,8 @@ function collectDataValuesGenre() {
   });
 }
 
+
+
 //Relese date
 
 function dateValue(){
@@ -57,7 +59,7 @@ function sortBy(){
 }
 
 //API 
-async function API(MovieSortByValue = "vote_average.desc", olderDateValue = "1900-01-01", newerDateValue = "9999-12-31"){
+async function API (MovieSortByValue , olderDateValue = "1900-01-01", newerDateValue = "9999-12-31"){
   const ApiKey = "&api_key=57e2a7b6bb030ad38f924e126dc9e94a";
   const ApiBase = "https://api.themoviedb.org/3/discover/movie?";
   const APIMovieRatingDescURL = ApiBase + "sort_by=" + MovieSortByValue +"&vote_count.gte=500&with_genres=" + dataValuesGenre + "&primary_release_date.gte="+ olderDateValue + "&primary_release_date.lte=" + newerDateValue + ApiKey;
@@ -72,7 +74,7 @@ async function API(MovieSortByValue = "vote_average.desc", olderDateValue = "190
 function moviesPage (movie) {
   const ApiImageBase = 'https://image.tmdb.org/t/p/w500/';
   let releaseYear = (new Date(movie.release_date)).getFullYear();
-  return  `<div class="result">
+  return  `<div id=${movie.id} class="result" onclick="getID(this)" >
   <figure class="result__img--wrapper">
     <img
       src="${ApiImageBase + movie.poster_path}"
@@ -84,14 +86,25 @@ function moviesPage (movie) {
     <p class="result__title">${movie.title}</p>
     <p class="result__year">${releaseYear}</p>
   </div>
-  <figure class="know-more">
+  <figure class="know-more" >
     <i class="fa-solid fa-ellipsis-vertical"></i>
   </figure>
 </div>`;
 }
 
+function getID(event) {
+  const ID = event.closest('.result').id;
+  console.log(ID)
+
+}
+
 //loading 
+
 document.addEventListener("DOMContentLoaded", function() {
   collectDataValuesGenre();
   API(dataValuesGenre);
 });
+
+
+async function APIDetails(i)
+{}

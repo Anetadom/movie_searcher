@@ -24,7 +24,7 @@ li {
 
 .row {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
 
 }
 
@@ -124,7 +124,7 @@ HEADER
     border-radius: 50px;
     border: double 3px transparent;
     background-image: linear-gradient(white, white),
-        linear-gradient(to right, #01B4E4, #1ED5A9);
+         linear-gradient(to right, #01B4E4, #1ED5A9);
     background-origin: border-box;
     background-clip: padding-box, border-box;
 }
@@ -252,6 +252,7 @@ SLIDER
 
 .splide {
     width: 100%;
+    padding: 0 100px;
 }
 
 .splide__track {
@@ -265,6 +266,34 @@ SLIDER
 .splide__slide {
     display: flex;
     justify-content: center;
+}
+
+
+.splide__arrow {
+    -ms-flex-align: center;
+    align-items: center;
+    background: transparent;
+    cursor: pointer;
+    height: 10%;
+    width: 10%;
+    max-width: 80px;
+    max-height: 80px;
+    opacity: 0.7;
+    transition: all 300ms ease;
+}
+
+
+
+.splide__arrow svg {
+    fill: #01B4E4;
+    font-size: 60px;
+    z-index: 100;
+    opacity: 1;
+    transition: all 500ms ease;
+}
+
+.splide__arrow svg:hover{
+    font-size: 70px;
 }
 
 /* 
@@ -282,7 +311,7 @@ MOVIES AND TV SHOW PAGE
     display: flex;
 }
 
-.conteriner__filter{
+.conteriner__filter {
     position: relative;
     display: flex;
     justify-content: center;
@@ -290,7 +319,7 @@ MOVIES AND TV SHOW PAGE
 
 .filter__parameters {
     position: absolute;
-    left:0;
+    left: 0;
     width: 240px;
     border: solid 1px c1c1c7;
     border-radius: 10px;
@@ -386,7 +415,7 @@ RESULTS OF SEARCH
     border: 0.5px solid #c1c1c7;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 0 30px #c1c1c7;  
+    box-shadow: 0 0 30px #c1c1c7;
 }
 
 .result__img {
@@ -396,31 +425,31 @@ RESULTS OF SEARCH
 
 }
 
-.result__title{
-   font-size: 16px; 
-   font-weight: 500;
-   padding: 3px 6px 0px 6px;
+.result__title {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 3px 6px 0px 6px;
 }
 
-.result__year{
+.result__year {
     font-size: 16px;
     padding: 6px;
 }
 
-.know-more{
-   display: flex;
-   justify-content: center;
-   text-align: center;
+.know-more {
+    display: flex;
+    justify-content: center;
+    text-align: center;
 
 }
 
-.fa-ellipsis-vertical{
+.fa-ellipsis-vertical {
     position: absolute;
     color: white;
     width: 48px;
     font-size: 20px;
     padding: 12px;
-    border: 2px solid ;
+    border: 2px solid;
     border-radius: 100%;
     background-color: #c1c1c7;
     top: 10px;
@@ -429,12 +458,12 @@ RESULTS OF SEARCH
     transition: all 300ms ease;
 }
 
-.result:hover .result__img{
+.result:hover .result__img {
     filter: blur(3px);
 }
 
-.result:hover .fa-ellipsis-vertical{
- opacity: 1;
+.result:hover .fa-ellipsis-vertical {
+    opacity: 1;
 
 }
 
@@ -445,7 +474,7 @@ MODAL
 
 */
 
-.container__modal{
+.container__modal {
     margin-top: 40px;
     display: flex;
     justify-content: center;
@@ -453,7 +482,7 @@ MODAL
 }
 
 
-.modal__wrapper{
+.modal__wrapper {
     background-color: #565657;
     width: 70vw;
     max-width: 1000px;
@@ -464,19 +493,17 @@ MODAL
     box-shadow: 0 0 30px #c1c1c7;
 }
 
-.modal__img--wrapper{
+.modal__img--wrapper {
     width: 30%;
     border-radius: 16px;
     overflow: hidden;
 }
 
-.modal__img{
+.modal__img {
     width: 100%;
     height: 100%;
 }
 
-.modal__content--wrapper{
+.modal__content--wrapper {
     width: 70%;
 }
-
-
