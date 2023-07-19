@@ -13,260 +13,251 @@
     ></script>
   </head>
 
-    <body>
-      <nav>
-        <div class="row"></div>
-        <div class="nav__container">
-          <figure class="nav__logo--wrapper">
-            <h1 class="nav__logo--title gradient">TOP MOVIES</h1>
-          </figure>
-          <ul class="nav__links">
-            <li class="nav__link">
-              <a href="./movies.html" class="nav__link--text gradient"
-                >Movies</a
+  <body>
+    <nav>
+      <div class="row"></div>
+      <div class="nav__container">
+        <figure class="nav__logo--wrapper">
+          <h1 class="nav__logo--title gradient">TOP MOVIES</h1>
+        </figure>
+        <ul class="nav__links">
+          <li class="nav__link">
+            <a href="./movies.html" class="nav__link--text gradient">Movies</a>
+          </li>
+          <li class="nav__link">
+            <a href="" class="nav__link--text gradient">TV Shows</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <section id="filter">
+        <div class="container conteriner__filter">
+          <div class="filter__parameters">
+            <div class="filter__wrapper">
+              <p class="filter__title">Sort by</p>
+              <select
+                name="sort-by"
+                id="sort-by"
+                class="filter__sort-by"
+                onchange="sortBy()"
               >
-            </li>
-            <li class="nav__link">
-              <a href="" class="nav__link--text gradient">TV Shows</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <main>
-        <section id="filter">
-          <div class="container conteriner__filter">
-            <div class="filter__parameters">
-              <div class="filter__wrapper">
-                <p class="filter__title">Sort by</p>
-                <select
-                  name="sort-by"
-                  id="sort-by"
-                  class="filter__sort-by"
-                  onchange="sortBy()"
-                >
+                <option class="filter__sort-by--option" disabled selected value>
+                  Sort by
+                </option>
                 <option
-                    class="filter__sort-by--option"  disabled selected value
-            
-                  >
-                    Sort by
-                  </option>
-                  <option
-                    class="filter__sort-by--option"
-                    value="vote_average.desc"
-                  >
-                    Rating Descending
-                  </option>
-                  <option
-                    class="filter__sort-by--option"
-                    value="vote_average.asc"
-                  >
-                    Rating Ascending
-                  </option>
-                  <option
-                    class="filter__sort-by--option"
-                    value="popularity.desc"
-                  >
-                    Popularity Descending
-                  </option>
-                  <option
-                    class="filter__sort-by--option"
-                    value="popularity.aesc"
-                  >
-                    Popularity Ascending
-                  </option>
-                  <option
-                    class="filter__sort-by--option"
-                    value="primary_release_date.desc"
-                  >
-                    Release Date
-                  </option>
-                  <option
-                    class="filter__sort-by--option"
-                    value="original_title.asc"
-                  >
-                    Title (A-Z)
-                  </option>
-                </select>
-              </div>
-              <div class="filter__wrapper">
-                <p class="filter__title">Genres</p>
-                <ul
-                  id="with_genres"
-                  class="filter__genres text"
-                  name="with_genres[]"
-                  onload="collectDataValues()"
+                  class="filter__sort-by--option"
+                  value="vote_average.desc"
                 >
-                  <li data-value="28">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Action
-                    </button>
-                  </li>
-                  <li data-value="12">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Adventure
-                    </button>
-                  </li>
-                  <li data-value="16">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Animation
-                    </button>
-                  </li>
-                  <li data-value="35">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Comedy
-                    </button>
-                  </li>
-                  <li data-value="80">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Crime
-                    </button>
-                  </li>
-                  <li data-value="99">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Documentary
-                    </button>
-                  </li>
-                  <li data-value="18">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Drama
-                    </button>
-                  </li>
-                  <li data-value="10751">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Family
-                    </button>
-                  </li>
-                  <li data-value="14">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Fantasy
-                    </button>
-                  </li>
-                  <li data-value="36">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      History
-                    </button>
-                  </li>
-                  <li data-value="27">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Horror
-                    </button>
-                  </li>
-                  <li data-value="10402">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Music
-                    </button>
-                  </li>
-                  <li data-value="9648">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Mystery
-                    </button>
-                  </li>
-                  <li data-value="10749">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Romance
-                    </button>
-                  </li>
-                  <li data-value="878">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Science Fiction
-                    </button>
-                  </li>
-                  <li data-value="10770">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      TV Movie
-                    </button>
-                  </li>
-                  <li data-value="53">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Thriller
-                    </button>
-                  </li>
-                  <li data-value="10752">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      War
-                    </button>
-                  </li>
-                  <li data-value="37">
-                    <button class="no__click" onclick="activeGenres(event)">
-                      Western
-                    </button>
-                  </li>
-                </ul>
+                  Rating Descending
+                </option>
+                <option
+                  class="filter__sort-by--option"
+                  value="vote_average.asc"
+                >
+                  Rating Ascending
+                </option>
+                <option class="filter__sort-by--option" value="popularity.desc">
+                  Popularity Descending
+                </option>
+                <option class="filter__sort-by--option" value="popularity.aesc">
+                  Popularity Ascending
+                </option>
+                <option
+                  class="filter__sort-by--option"
+                  value="primary_release_date.desc"
+                >
+                  Release Date
+                </option>
+                <option
+                  class="filter__sort-by--option"
+                  value="original_title.asc"
+                >
+                  Title (A-Z)
+                </option>
+              </select>
+            </div>
+            <div class="filter__wrapper">
+              <p class="filter__title">Genres</p>
+              <ul
+                id="with_genres"
+                class="filter__genres text"
+                name="with_genres[]"
+                onload="collectDataValues()"
+              >
+                <li data-value="28">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Action
+                  </button>
+                </li>
+                <li data-value="12">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Adventure
+                  </button>
+                </li>
+                <li data-value="16">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Animation
+                  </button>
+                </li>
+                <li data-value="35">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Comedy
+                  </button>
+                </li>
+                <li data-value="80">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Crime
+                  </button>
+                </li>
+                <li data-value="99">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Documentary
+                  </button>
+                </li>
+                <li data-value="18">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Drama
+                  </button>
+                </li>
+                <li data-value="10751">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Family
+                  </button>
+                </li>
+                <li data-value="14">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Fantasy
+                  </button>
+                </li>
+                <li data-value="36">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    History
+                  </button>
+                </li>
+                <li data-value="27">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Horror
+                  </button>
+                </li>
+                <li data-value="10402">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Music
+                  </button>
+                </li>
+                <li data-value="9648">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Mystery
+                  </button>
+                </li>
+                <li data-value="10749">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Romance
+                  </button>
+                </li>
+                <li data-value="878">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Science Fiction
+                  </button>
+                </li>
+                <li data-value="10770">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    TV Movie
+                  </button>
+                </li>
+                <li data-value="53">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Thriller
+                  </button>
+                </li>
+                <li data-value="10752">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    War
+                  </button>
+                </li>
+                <li data-value="37">
+                  <button class="no__click" onclick="activeGenres(event)">
+                    Western
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="filter__wrapper" onchange="dateValue()">
+              <p class="filter__title">Release date</p>
+              <p class="filter__subtitle">from</p>
+              <input type="date" class="filter__data older" />
+              <p class="filter__subtitle">to</p>
+              <input type="date" class="filter__data newer" />
+            </div>
+            <div class="filter__wrapper--last">
+              <p class="filter__title">User Score</p>
+              <div class="slider__value">
+                <h2 id="title-min" class="slider__value--title">0</h2>
+                <h2 id="title-max" class="slider__value--title">10</h2>
               </div>
-              <div class="filter__wrapper" onchange="dateValue()">
-                <p class="filter__title">Release date</p>
-                <p class="filter__subtitle">from</p>
-                <input type="date" class="filter__data older" />
-                <p class="filter__subtitle">to</p>
-                <input type="date" class="filter__data newer" />
-              </div>
-              <div class="filter__wrapper--last">
-                <p class="filter__title">User Score</p>
-                <div class="slider__value">
-                  <h2 id="title-min" class="slider__value--title">0</h2>
-                  <h2 id="title-max" class="slider__value--title">10</h2>
-                </div>
-                <div class="double__slider">
-                  <div class="double__slider--body">
-                    <div class="double__slider--track">
-                      <div class="double__slider--range">
-                        <div
-                          id="dot-left"
-                          class="double__slider--dot double__slider--dot-left"
-                        ></div>
-                        <div
-                          id="dot-right"
-                          class="double__slider--dot double__slider--dot-right"
-                        ></div>
-                      </div>
+              <div class="double__slider">
+                <div class="double__slider--body">
+                  <div class="double__slider--track">
+                    <div class="double__slider--range">
+                      <div
+                        id="dot-left"
+                        class="double__slider--dot double__slider--dot-left"
+                      ></div>
+                      <div
+                        id="dot-right"
+                        class="double__slider--dot double__slider--dot-right"
+                      ></div>
                     </div>
-                    <input
-                      id="input-left"
-                      type="range"
-                      class="double__slider"
-                      min="0"
-                      max="10"
-                    />
-                    <input
-                      id="input-right"
-                      type="range"
-                      class="double__slider"
-                      min="0"
-                      max="10"
-                    />
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="results__wrapper"></div>
-          </div>
-        </section>
-        <!-- <section id="modal">
-          <div class="container__modal">
-            <img src="" alt="">
-            <div class="modal__wrapper">
-              <div class="modal__img--wrapper">
-                <img src="https://image.tmdb.org/t/p/w500//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="" class="modal__img" />
-              </div>
-              <div class="modal__content--wrapper">
-                <div class="modal__info">
-                  <h1 class="modal__title">The Godfather</h1>
-                  <h3 class="modal__year">1972</h3>
-                  <h3 class="modal__genres">Action</h3>
-                </div>
-                <div class="modal__ratings">8.7</div>
-                <div class="modal__description">
-                  Spanning the years 1945 to 1955, a chronicle of the fictional
-                  Italian-American Corleone crime family. When organized crime
-                  family patriarch, Vito Corleone barely survives an attempt on
-                  his life, his youngest son, Michael steps in to take care of
-                  the would-be killers, launching a campaign of bloody revenge.
+                  <input
+                    id="input-left"
+                    type="range"
+                    class="double__slider"
+                    min="0"
+                    max="10"
+                  />
+                  <input
+                    id="input-right"
+                    type="range"
+                    class="double__slider"
+                    min="0"
+                    max="10"
+                  />
                 </div>
               </div>
             </div>
           </div>
-        </section> -->
-      </main>
-    </body>
+          <div class="results__wrapper"></div>
+        </div>
+      </section>
+      <section id="modal">
+        <!-- <div class="container__modal">
+          <img src="" alt="" />
+          <div class="modal__wrapper">
+            <div class="modal__img--wrapper">
+              <img src="https://image.tmdb.org/t/p/w500//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="" class="modal__img"/>
+              <div class="modal__ratings">8.7</div>
+            </div>
+            <div class="modal__content--wrapper">
+              <div class="modal__info">
+                <div class="modal__title--wrapper">
+                  <h1 class="modal__title">The Godfather<span class="modal__year">&nbsp;(1972)</span></h1>
+                  
+                </div>
+                <h3 class="modal__genres">Action</h3>
+              </div>
+              <div class="modal__description">
+                Spanning the years 1945 to 1955, a chronicle of the fictional
+                Italian-American Corleone crime family. When organized crime
+                family patriarch, Vito Corleone barely survives an attempt on
+                his life, his youngest son, Michael steps in to take care of the
+                would-be killers, launching a campaign of bloody revenge.
+              </div>
+            </div>
+            <button class="modal__close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div> -->
+      </section>
+    </main>
   </body>
 </html>

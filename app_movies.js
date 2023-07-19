@@ -94,9 +94,62 @@ function moviesPage (movie) {
 
 function getID(event) {
   const ID = event.closest('.result').id;
-  console.log(ID)
-
+  console.log(ID);
+  const hideElement = document.getElementById("filter") 
+  const showElement = document.getElementById("modal")
+  hideElement.classList.add("hide")
+  showElement.classList.remove("hide")
+  APIDetails(ID);
 }
+
+async function APIDetails(ID){
+const details = await fetch(`https://api.themoviedb.org/3/movie/${ID}?api_key=57e2a7b6bb030ad38f924e126dc9e94a`); 
+const detailsData = await (details.json());
+console.log(detailsData);
+const actors = await fetch(`https://api.themoviedb.org/3/movie/${ID}/credits?api_key=57e2a7b6bb030ad38f924e126dc9e94a`); 
+const actorsData = await (actors.json());
+console.log(actorsData);
+
+const genresListMovie = detailsData.genres.map((genres) => genres.name).join(", ")
+console.log (genresListMovie)
+
+
+//Adding html
+const movieDetails = document.getElementById("modal");
+movieDetails.innerHTML = `
+    <div class="container__modal">
+      <img src="" alt="" />
+      <div class="modal__wrapper">
+        <div class="modal__img--wrapper">
+          <img src="https://image.tmdb.org/t/p/w500/${detailsData.poster_path}" alt="" class="modal__img"/>
+          <div class="modal__ratings">${detailsData.vote_average}</div>
+        </div>
+        <div class="modal__content--wrapper">
+          <div class="modal__info">
+            <div class="modal__title--wrapper">
+              <h1 class="modal__title">${detailsData.title}<span class="modal__year">&nbsp;(${detailsData.release_date.slice(0, 4)})</span></h1>
+            </div>
+            <h3 class="modal__genres">${genresListMovie}</h3>
+          </div>
+          <div class="modal__description">
+            ${detailsData.overview}
+          </div>
+        </div>
+        <button class="modal__close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+  `;
+}
+
+// close modal
+
+function closeModal(){
+  const close = document.getElementById("modal")
+  const show = document.getElementById("filter") 
+  close.classList.add("hide")
+  show.classList.remove("hide")
+}
+
 
 //loading 
 
@@ -105,6 +158,3 @@ document.addEventListener("DOMContentLoaded", function() {
   API(dataValuesGenre);
 });
 
-
-async function APIDetails(ID)
-{}
