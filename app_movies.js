@@ -106,5 +106,5 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-async function APIDetails(i)
+async function APIDetails(ID)
 {}
