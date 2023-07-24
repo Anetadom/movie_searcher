@@ -2,7 +2,7 @@
 
 const ApiKey = "&api_key=57e2a7b6bb030ad38f924e126dc9e94a";
 const ApiBase = "https://api.themoviedb.org/3/discover/";
-const ApiTrending = 'movie?with_genres=10402';
+const ApiTrending = 'movie?with_origin_country=US&sort_by=popularity.desc&';
 const URLTrending = ApiBase + ApiTrending + ApiKey
 const ApiTrendingTV = 'tv?with_origin_country=US&sort_by=popularity.desc&';
 const URLTrendingTV = ApiBase + ApiTrendingTV + ApiKey;
@@ -106,6 +106,52 @@ function showsTrendingMain(show){
 }
 
 mainMovies ();
+
+// search list 
+
+async function searchList(searchTerm){
+const searchElement = await fetch(`https://api.themoviedb.org/3/search/multi?language=en&query=${searchTerm}&api_key=57e2a7b6bb030ad38f924e126dc9e94a`)
+const searchElementData = await (searchElement.json());
+console.log(`https://api.themoviedb.org/3/search/multi?language=en&query=${searchTerm}&api_key=57e2a7b6bb030ad38f924e126dc9e94a`)
+const filteredResults = searchElementData.results.filter((item) => item.media_type.toLowerCase() !== 'person');
+// Wyświetlenie wyników na stronie
+const searchElementsList = document.querySelector('.search__list');
+searchElementsList.innerHTML = filteredResults.map((movie) => elementsListHTML(movie)).join('');
+
+// search list html
+
+function elementsListHTML (movie){
+  let date = movie.release_date || movie.first_air_date;
+  let title = movie.title || movie.name;
+  let poster = ApiImageBase + movie.poster_path || "./assets/imgnotfound.jpg"
+  
+  return `<div class="search__list--element" id=${movie.id} onclick="getID(this)">
+  <img src="${poster}" alt="" class="search__element--img">
+  <div class="search__list--info">
+    <h3 class="search__element--title">${title}</h3>
+    <h3 class="search__element--year">${date}</h3>
+  </div>
+</div>`
+}
+}
+
+
+
+
+// get name from searchbox
+
+function searchTerm(){
+let searchTerm = (document.getElementById("search__phrase").value).trim();
+console.log(searchTerm);
+searchList(searchTerm);
+}
+
+//get id
+
+function getID(event) {
+  const ID = event.closest('.search__list--element').id;
+  console.log(ID)
+}
 
 
 // Random img as a bacground

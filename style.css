@@ -25,6 +25,9 @@ li {
 .row {
     width: 100%;
     max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
@@ -122,8 +125,9 @@ HEADER
 }
 
 .header__search {
-    width: 75%;
+    width: 100%;
     padding: 12px;
+    margin: 0 24px;
     border-radius: 50px;
     border: double 3px transparent;
     background-image: linear-gradient(white, white),
@@ -139,8 +143,11 @@ HEADER
 
 
 .header__search--wrapper {
+    width: 100%;
+    max-width: 500px;
     position: relative;
-
+    display: flex;
+    justify-content: center;
 }
 
 .header__search--button {
@@ -155,7 +162,7 @@ HEADER
     font-weight: 900;
     font-size: 20px;
     position: absolute;
-    right: 16%;
+    right: 8%;
     top: 33%;
     transition: all 300ms ease-in-out;
 }
@@ -165,6 +172,62 @@ HEADER
     transform: scale(1.2);
     color: #01B4E4;
 
+}
+
+/* 
+
+SEARCH LIST
+
+*/
+
+.search__list{
+width: calc(100% - 85px);
+max-width: 500px;
+background-color: #25274D;
+position: absolute;
+max-width: 500px;
+top: 100%;
+right: 40px;
+overflow-y: scroll;
+max-height: 250px;
+z-index: 100;
+border-bottom-left-radius:5px ;
+border-bottom-right-radius:5px ;
+}
+
+.search__list--element{
+    height: 75px;
+    display: flex;
+
+}
+
+.search__element--img{
+    height: 100%;
+    padding: 4px 12px;
+}
+
+.search__list--info{
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+}
+
+.search__element--title,
+.search__element--year{
+    display: flex;
+    text-align: left;
+    color: #f1f0ef;
+}
+
+.search__element--title{
+    font-size: 20px;
+}
+
+.search__element--year{
+    font-size: 12px;
 }
 
 
@@ -195,7 +258,7 @@ TRENDING
 }
 
 .main__box:hover .main__img {
-    filter: blur(7px);
+    filter: blur(7px) grayscale(1);
     opacity: (0.7);
 }
 
@@ -244,7 +307,7 @@ TRENDING
 
 .main__box:hover .main__description {
     transform: translateY(0%);
-    opacity: 1;
+    opacity: 1; 
 }
 
 /* 
@@ -256,6 +319,7 @@ SLIDER
 .splide {
     width: 100%;
     padding: 0 100px;
+    z-index: 1;
 }
 
 .splide__track {
@@ -475,7 +539,26 @@ MODAL
 
 */
 
+.fade-in{
+    animation: fadeIn 2s ease-in-out ;
+}
+
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+ 
+
+
 .container__modal {
+    background-color: #25274D;
+    height: calc(100vh - 67px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -483,13 +566,11 @@ MODAL
 
 
 .modal__wrapper {
-    position: relative;
-    color: white;
-    background-color: #25274D;
-    width: 100vw;
-    height: calc(100vh - 67px);
-    z-index: 1000;
     display: flex;
+    margin: 0 auto;
+    max-width: 1200px;
+    position: relative;
+    color: white; 
     padding: 44px 30px;
 }
 
@@ -558,10 +639,3 @@ MODAL
     right: 32px;
 }
 
-/* #filter {
-    display: none;
-} */
-
-/* #modal{
-    display: none;
-} */
