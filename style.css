@@ -204,6 +204,7 @@ border-bottom-right-radius:5px ;
 .search__element--img{
     height: 100%;
     padding: 4px 12px;
+    width: 68px;
 }
 
 .search__list--info{
