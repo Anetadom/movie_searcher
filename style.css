@@ -195,9 +195,23 @@ border-bottom-left-radius:5px ;
 border-bottom-right-radius:5px ;
 }
 
+.search__list::-webkit-scrollbar {
+    width: 12px;
+}
+
+
+
+.search__list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #01B4E4;
+    border: 1px solid white;
+  }
+
 .search__list--element{
     height: 75px;
     display: flex;
+    cursor: pointer;
 
 }
 
@@ -241,20 +255,29 @@ TRENDING
 
 
 
+.trending__container--movies,
+.trending__container--shows{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+}
+
+
 .trending__container--movies {
     background-color: #f1f0ef;
-    margin: 0;
+    
 }
 
 .trending__container--shows {
     background-color: #25274D;
-    margin: 0;
-
 }
 
 .main__box {
     position: relative;
     max-width: 350px;
+    cursor: pointer;
 
 }
 
@@ -294,6 +317,7 @@ TRENDING
 }
 
 .main__description {
+    font-size: 12px;
     color: white;
     width: 100%;
     position: absolute;
@@ -309,6 +333,10 @@ TRENDING
 .main__box:hover .main__description {
     transform: translateY(0%);
     opacity: 1; 
+}
+
+.main__info--wrapper{
+    padding-top: 12px ;
 }
 
 /* 
@@ -477,7 +505,6 @@ RESULTS OF SEARCH
     margin: 12px 20px;
     position: relative;
     width: calc((100% - 4 * 40px) / 4);
-    max-height: 450px;
     border: 0.5px solid #c1c1c7;
     border-radius: 20px;
     overflow: hidden;
