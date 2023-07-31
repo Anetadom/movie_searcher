@@ -34,7 +34,6 @@ async function APIGenres (){
   const page = localStorage.getItem("pageValue");
   const genres = await fetch(`https://api.themoviedb.org/3/genre/${page}/list?api_key=57e2a7b6bb030ad38f924e126dc9e94a`);
   const genresData = await (genres.json())
-  console.log(genresData)
   const GenresFilter = document.getElementById("with_genres")
   GenresFilter.innerHTML =  genresData.genres.map((genre) => GenresHTML(genre)).join("");
   
@@ -49,7 +48,7 @@ async function APIGenres (){
   
 
 
-//API 
+// API zmiany
 async function API(MovieSortByValue, olderDateValue = "1900-01-01", newerDateValue = "9999-12-31") {
   const page = localStorage.getItem("pageValue");
   let olderDateType ="";
@@ -72,11 +71,24 @@ async function API(MovieSortByValue, olderDateValue = "1900-01-01", newerDateVal
   const ApiBase = `https://api.themoviedb.org/3/discover/${page}?`;
   const APIMovieRatingDescURL = ApiBase + "sort_by=" + MovieSortByValue + "&vote_count.gte=500&with_genres=" + dataValuesGenre + olderDateType + olderDateValue + newerDateType + newerDateValue + ApiKey;
   console.log(APIMovieRatingDescURL);
+
   const moviesTrending = await fetch(APIMovieRatingDescURL);
-  const moviesTrendingData = await (moviesTrending.json());
+  const moviesTrendingData = await moviesTrending.json();
   const moviesTrendingList = document.querySelector(".results__wrapper");
-  moviesTrendingList.innerHTML = moviesTrendingData.results.map((movie) => moviesPage(movie)).join("");
+  const noResultsMessage = document.querySelector(".noResultsMessage");
+
+  if (moviesTrendingData.results.length === 0) {
+    
+    moviesTrendingList.style.display = "none";
+    noResultsMessage.style.display = "block";
+  } else {
+   
+    moviesTrendingList.style.display = "flex";
+    noResultsMessage.style.display = "none";
+    moviesTrendingList.innerHTML = moviesTrendingData.results.map((movie) => moviesPage(movie)).join("");
+  }
 }
+
 
 //HTML code
 function moviesPage(movie) {
@@ -109,7 +121,6 @@ function moviesPage(movie) {
 
 function getID(event) {
   const ID = event.closest('.result').id;
-  console.log(ID);
   IDFilter = document.getElementById("filter");
   IDModal = document.getElementById("modal");
 
@@ -128,13 +139,11 @@ async function APIDetails(ID) {
   const page = localStorage.getItem("pageValue")
   const details = await fetch(`https://api.themoviedb.org/3/${page}/${ID}?api_key=57e2a7b6bb030ad38f924e126dc9e94a`);
   const detailsData = await (details.json());
-  console.log(detailsData);
   const actors = await fetch(`https://api.themoviedb.org/3/${page}/${ID}/credits?api_key=57e2a7b6bb030ad38f924e126dc9e94a`);
   const actorsData = await (actors.json());
-  console.log(actorsData);
 
   const genresList = detailsData.genres.map((genres) => genres.name).join(", ")
-  console.log(genresList)
+
 
 
   //Adding modal
@@ -208,7 +217,6 @@ function closeModal() {
   IDModal.classList.add("hide")
   IDFilter.classList.remove("hide")
   IDModal.classList.remove("fade-in")
-  console.log(IDFilter)
 }
 
 //loading 
@@ -224,7 +232,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function newPage (event){
   const newPage = event.target
   const newPageValue = newPage.getAttribute ("value");
-  console.log(newPageValue);
   localStorage.setItem ("pageValue", newPageValue)
   window.location.href = `${window.location.origin}/movie_searcher/movies.html`
 }

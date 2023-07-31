@@ -10,7 +10,7 @@ const ApiImageBase = "https://image.tmdb.org/t/p/w500/";
 console.log(URLTrending);
 
 // Main movies function
-async function mainMovies() {
+  async function mainMovies() {
   const moviesTrending = await fetch(URLTrending);
   const moviesTrendingData = await moviesTrending.json();
   const tvTrending = await fetch(URLTrendingTV);
@@ -57,7 +57,9 @@ async function mainMovies() {
   carousel1.mount();
   carousel2.mount();
   // CAROUSEL
-}
+};
+
+setTimeout(() => { mainMovies() }, 100);
 
 function moviesTrendingMain(movie) {
   let releaseYear = new Date(movie.release_date).getFullYear();
@@ -97,7 +99,6 @@ function showsTrendingMain(show) {
   </div>`;
 }
 
-mainMovies();
 
 // search list
 
@@ -290,13 +291,13 @@ function closeModal() {
 }
 
 // Random img as a bacground
-const imagesQuantity = 11;
 
 function getRandomImg(event) {
+  const imagesQuantity = 11;
   const imgValue = Math.floor(imagesQuantity * Math.random());
   const imgURL = "url(./assets/backgroundimg" + imgValue + ".jpg)";
   document.querySelector(".header__container").style.backgroundImage = imgURL;
-}
+};
 
 // close search list after click 
  function hideSearchList(){

@@ -554,6 +554,7 @@ RESULTS OF SEARCH
 */
 
 .results__wrapper {
+    display: none;
     position: absolute;
     right: 0;
     display: flex;
@@ -623,6 +624,13 @@ RESULTS OF SEARCH
 
 }
 
+
+.noResultsMessage{
+    display: flex;
+    width: 100%;
+    text-align: center;
+
+}
 
 /* 
 
