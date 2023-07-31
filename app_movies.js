@@ -226,5 +226,5 @@ function newPage (event){
   const newPageValue = newPage.getAttribute ("value");
   console.log(newPageValue);
   localStorage.setItem ("pageValue", newPageValue)
-  window.location.href = `${window.location.origin}/movies.html`
+  window.location.href = `${window.location.origin}/movie_searcher/movies.html`
 }
