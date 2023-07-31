@@ -330,5 +330,5 @@ function newPage (event){
   const newPageValue = newPage.getAttribute ("value");
   localStorage.setItem ("pageValue", newPageValue)
 
-  window.location.href = `${window.location.origin}/FinalProject/movies.html`
+  window.location.href = `${window.location.origin}/movie_searcher/movies.html`
 }
