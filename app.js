@@ -325,9 +325,10 @@ function search(event){
 // GET TO NEW PAGE 
 
 function newPage (event){
+  console.log(window.location);
   const newPage = event.target
   const newPageValue = newPage.getAttribute ("value");
-  console.log(newPageValue);
   localStorage.setItem ("pageValue", newPageValue)
-  window.location.href = `${window.location.origin}/movies.html`
+
+  window.location.href = `${window.location.origin}/FinalProject/movies.html`
 }
