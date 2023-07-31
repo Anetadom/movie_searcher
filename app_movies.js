@@ -193,7 +193,7 @@ async function APIDetails(ID) {
       ratings.style.color = "red";
     }
     
-    const modalBackground = document.querySelector(".container__modal")
+    const modalBackground = document.querySelector(".container__modal");
     modalBackground.style.backgroundImage=`url(https://image.tmdb.org/t/p/original/${detailsData.backdrop_path})`;
 }
 
