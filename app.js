@@ -13,9 +13,9 @@ console.log(URLTrending);
 async function mainMovies() {
   const moviesTrending = await fetch(URLTrending);
   const moviesTrendingData = await moviesTrending.json();
-  const moviesTrendingList = document.querySelector(".movies__list");
   const tvTrending = await fetch(URLTrendingTV);
   const tvTrendingData = await tvTrending.json();
+  const moviesTrendingList = document.querySelector(".movies__list");
   const tvTrendingList = document.querySelector(".shows__list");
 
   moviesTrendingList.innerHTML = moviesTrendingData.results
@@ -32,15 +32,19 @@ async function mainMovies() {
     pagination: false,
     gap: "20px",
     breakpoints: {
-      1200: {
+      1500: {
         perPage: 4,
         gap: ".7rem",
       },
-      768: {
+      1200: {
+        perPage: 3,
+        gap: ".7rem",
+      },
+      900: {
         perPage: 2,
         gap: ".7rem",
       },
-      480: {
+      768: {
         perPage: 1,
         gap: "0rem",
       },
@@ -98,19 +102,26 @@ mainMovies();
 // search list
 
 async function searchList(searchTerm) {
-  const searchElement = await fetch(
-    `https://api.themoviedb.org/3/search/multi?language=en&query=${searchTerm}&api_key=57e2a7b6bb030ad38f924e126dc9e94a`
-  );
+  // let searchElement =""
+  // try{
+   const searchElement = await fetch(
+    `https://api.themoviedb.org/3/search/multi?language=en&query=${searchTerm}&api_key=57e2a7b6bb030ad38f924e126dc9e94a`)
+  // catch (error) {
+  //   console.error(error)
+  // }
   const searchElementData = await searchElement.json();
-  const filteredResults = searchElementData.results.filter(
-    (item) => item.media_type !== "person"
-  );
-  console.log(filteredResults);
+  const filteredResults = searchElementData.results.filter((item) => item.media_type !== "person");
+
   // Show elements on the page
   const searchElementsList = document.querySelector(".search__list");
   searchElementsList.innerHTML = filteredResults
     .map((movie) => elementsListHTML(movie))
     .join("");
+
+  const searchResultsDiv = document.querySelector(".search__results--wrapper")  
+  searchResultsDiv.innerHTML = filteredResults
+  .map((movie) => searchResults(movie))
+  .join("");
 
   // search list html
 
@@ -134,6 +145,36 @@ async function searchList(searchTerm) {
     </div>
     </div>`;
   }
+
+  function searchResults(movie) {
+    let date = movie.release_date || movie.first_air_date;
+    let releaseYear = new Date(date).getFullYear();
+    let title = movie.title || movie.name;
+    let poster = "";
+
+    if (movie.poster_path === null) {
+      poster = "./assets/imgnotfound.jpg";
+    } else {
+      poster = ApiImageBase + movie.poster_path;
+    }
+
+    return `<div class="search__result" id=${movie.id} value="${movie.media_type}" onclick="getID(this)">
+    <figure class="search__img--wrapper">
+      <img
+        src="${poster}"
+        alt="" class="search__img">
+    </figure>
+    <div class="search__info--wrapper">
+      <p class="search__title ">${title}</p>
+      <p class="search__year"> ${releaseYear}</p>
+    </div>
+    <div class="search__description--wrapper">
+      <p class="search__description ">${movie.overview}</p>
+    </div>
+  </div>`;
+  }
+
+
 }
 
 // get name from searchbox
@@ -144,6 +185,8 @@ function searchTerm() {
   let searchTerm = document.getElementById("search__phrase").value.trim();
   searchList(searchTerm);
 }
+
+//search by ID API
 
 async function APIDetails(ID, type) {
   const details = await fetch(
@@ -162,11 +205,12 @@ async function APIDetails(ID, type) {
   } else {
     poster = ApiImageBase + detailsData.poster_path;
   }
-
+  
   const movieDetails = document.getElementById("modal");
   const ratings = Math.round(detailsData.vote_average * 10) / 10 + " / 10";
   movieDetails.innerHTML = `
   <div class="container__modal">
+  <div class="backdrop-overlay"></div>
   <img src="" alt="" />
   <div class="modal__wrapper fade-in">
   <div class="modal__img--wrapper">
@@ -202,6 +246,9 @@ async function APIDetails(ID, type) {
     } else if (voteAverage < 2.5) {
       ratings.style.color = "red";
     }
+
+    const modalBackground = document.querySelector(".container__modal")
+    modalBackground.style.backgroundImage=`url(https://image.tmdb.org/t/p/original/${detailsData.backdrop_path})`;
   }
 
   ratingsColor();
@@ -212,18 +259,20 @@ async function APIDetails(ID, type) {
 function getID(clickedElement) {
   const ID = clickedElement.id;
   const type = clickedElement.getAttribute("value");
-
   IDTrendingMovie = document.getElementById("trending__movies");
   IDTrendingTV = document.getElementById("trending__shows");
   IDModal = document.getElementById("modal");
   IDHeader = document.getElementById("header");
-
+  const sectionSearchResults = document.getElementById("search__results")
+  
+  
   setTimeout(() => {
     IDTrendingMovie.classList.add("hide");
     IDTrendingTV.classList.add("hide");
     IDHeader.classList.add("hide");
     IDModal.classList.remove("hide");
-  }, 300);
+    sectionSearchResults.classList.add('hide');
+  }, 500);
   APIDetails(ID, type);
 }
 
@@ -235,8 +284,8 @@ function closeModal() {
   IDTrendingMovie.classList.remove("hide");
   IDTrendingTV.classList.remove("hide");
   IDHeader.classList.remove("hide");
-  IDModal.classList.add("hide");
   IDModal.classList.remove("fade-in");
+  IDModal.classList.add("hide");
   document.getElementById("search__phrase").value = "";
 }
 
@@ -247,4 +296,38 @@ function getRandomImg(event) {
   const imgValue = Math.floor(imagesQuantity * Math.random());
   const imgURL = "url(./assets/backgroundimg" + imgValue + ".jpg)";
   document.querySelector(".header__container").style.backgroundImage = imgURL;
+}
+
+// close search list after click 
+ function hideSearchList(){
+  const searchList = document.querySelector(".search__list");
+  const searchInput = document.getElementById("search__phrase");
+  const searchButton = document.querySelector(".header__search--button")
+
+  if (!searchList.contains(event.target) && !searchInput.contains(event.target) && !searchButton.contains(event.target) )  {
+    searchList.classList.add("hide");
+  }
+};
+
+function search(event){
+
+  const sectionSearchResults = document.getElementById("search__results")
+  const searchList = document.querySelector(".search__list");
+  IDTrendingMovie = document.getElementById("trending__movies");
+  IDTrendingTV = document.getElementById("trending__shows");
+  sectionSearchResults.classList.toggle('fade-in');
+  IDTrendingMovie.classList.add("hide");
+  IDTrendingTV.classList.add("hide");
+  searchList.classList.add("hide");
+  sectionSearchResults.classList.toggle('hide');
+}
+
+// GET TO NEW PAGE 
+
+function newPage (event){
+  const newPage = event.target
+  const newPageValue = newPage.getAttribute ("value");
+  console.log(newPageValue);
+  localStorage.setItem ("pageValue", newPageValue)
+  window.location.href = `${window.location.origin}/movies.html`
 }
