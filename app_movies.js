@@ -260,3 +260,19 @@ function rotate(){
   angle +=180
   arrow.style.transform = `rotate(${angle}deg)`
 }
+
+
+// RANGE 
+
+function userScore(){
+  const leftdot = document.querySelector(".left__value");
+  const rightdot = document.querySelector(".right__value");
+  const leftValue = leftdot.value;
+  const rightValue = rightdot.value;
+  let minValue = Math.min( leftValue, rightValue )
+  let maxValue = Math.max( leftValue, rightValue )
+  const rangeSlide = document.querySelector(".range-selected")
+  rangeSlide.style.left = minValue * 10 + "%"
+  rangeSlide.style.right = 100 - (maxValue * 10) + "%"
+    rangeSlide.style.transition = "left 0.5s, right 0.5s";
+ }
