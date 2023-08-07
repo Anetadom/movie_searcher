@@ -1,94 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <script src="./app.js"></script>
-  <script src="https://kit.fontawesome.com/e0d028b2fd.js" crossorigin="anonymous"></script>
-  <script src="
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./app.js"></script>
+    <script
+      src="https://kit.fontawesome.com/e0d028b2fd.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="
     https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
     "></script>
-  <link href="
+    <link
+      href="
     https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
-    " rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
-</head>
+    "
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<body onload="getRandomImg()" onclick="hideSearchList()">
-  <nav>
-    <div class="row"></div>
-    <div class="nav__container">
-      <figure class="nav__logo--wrapper">
-        <h1 class="nav__logo--title gradient">TOP MOVIES</h1>
-      </figure>
-      <ul class="nav__links" >
-        <li class="nav__link nav__link--text gradient" value="movie" onclick="newPage(event)">
-          Movies
-        </li>
-        <li class="nav__link nav__link--text gradient" value="tv" onclick="newPage(event)">
-        TV Shows
-        </li> 
-      </ul>
-    </div>
-  </nav>
-  </nav>
-  <main>
-    <section id="header">
-      <div class="header__container">
-        <div class="row">
-          <div class="header__description--wrapper">
-            <h1 class="header__title">Welcome</h1>
-            <h2 class="header__subtitle">
-              Millions of movies and TV shows to discover.<br />
-              Explore now
-            </h2>
-          </div>
-          <div class="header__search--wrapper">
-            <input onkeyup="searchTerm()" type="text" name="" id="search__phrase" class="header__search"
-              placeholder="Search for movies and TV shows" />
-            <button class="header__search--button" onclick="search(event)">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <div class="search__list">
+  <body onload="getRandomImg()" onclick="hideSearchList()">
+    <nav>
+      <div class="row"></div>
+      <div class="nav__container">
+        <figure class="nav__logo--wrapper">
+          <a href="./index.html">
+            <h1 class="nav__logo--title">TOP MOVIES</h1></a
+          >
+        </figure>
+        <ul class="nav__links">
+          <li
+            class="nav__link nav__link--text"
+            value="movie"
+            onclick="newPage(event)"
+          >
+            Movies
+          </li>
+          <li
+            class="nav__link nav__link--text"
+            value="tv"
+            onclick="newPage(event)"
+          >
+            TV Shows
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <section id="header">
+        <div class="header__container">
+          <div class="row">
+            <div class="header__description--wrapper">
+              <h1 class="header__title">Welcome</h1>
+              <h2 class="header__subtitle">
+                Millions of movies and TV shows to discover.<br />
+                Explore now
+              </h2>
+            </div>
+            <div class="header__search--wrapper">
+              <input
+                onkeyup="searchTerm()"
+                type="text"
+                name=""
+                id="search__phrase"
+                class="header__search"
+                placeholder="Search for movies and TV shows"
+              />
+              <button
+                class="header__search--button"
+                onclick="search(event)"
+                onclick="searchResultsWrapper"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+              <div class="search__list"></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section id="trending__movies">
-      <div class="container trending__container--movies">
-        <h1 class="container__title container__title--movies">Trending movies</h1>
-        <div id="carousel1" class="splide">
-          <div class="splide__track">
-            <div class="splide__list movies__list"></div>
+      </section>
+      <section id="trending__movies">
+        <div class="container trending__container--movies">
+          <h1 class="container__title container__title--movies">
+            Trending movies
+          </h1>
+          <div id="carousel1" class="splide">
+            <div class="splide__track">
+              <div class="splide__list movies__list"></div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section id="trending__shows">
-      <div class="container trending__container--shows">
-        <h1 class="container__title white__color">Trending TV Shows</h1>
-        <div id="carousel2" class="splide">
-          <div class="splide__track">
-            <div class="splide__list shows__list"></div>
+      </section>
+      <section id="trending__shows">
+        <div class="container trending__container--shows">
+          <h1 class="container__title white__color">Trending TV Shows</h1>
+          <div id="carousel2" class="splide">
+            <div class="splide__track">
+              <div class="splide__list shows__list"></div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section id="modal" class="hide">
-    </section>
-    <section id="search__results" class="hide">
-      <div class="container container__search--results">
-        <div class="row">
-          <div class="search__results--wrapper">
+      </section>
+      <section id="modal" class="hide"></section>
+      <section id="search__results" class="hide">
+        <div class="container container__search--results">
+          <div class="row">
+            <div class="search__no-results"></div>
+            <div class="search__results--wrapper"></div>
           </div>
         </div>
-      </div>
-      </div>
-    </section>
-  </main>
-</body>
-
+      </section>
+    </main>
+  </body>
 </html>

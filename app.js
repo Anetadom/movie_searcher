@@ -26,7 +26,7 @@ console.log(URLTrending);
     .join("");
 
   const carouselSettings = {
-    perPage: 6,
+    perPage: 5,
     perMove: 1,
     type: "loop",
     pagination: false,
@@ -44,7 +44,7 @@ console.log(URLTrending);
         perPage: 2,
         gap: ".7rem",
       },
-      768: {
+      480: {
         perPage: 1,
         gap: "0rem",
       },
@@ -103,13 +103,10 @@ function showsTrendingMain(show) {
 // search list
 
 async function searchList(searchTerm) {
-  // let searchElement =""
-  // try{
+ 
    const searchElement = await fetch(
-    `https://api.themoviedb.org/3/search/multi?language=en&query=${searchTerm}&api_key=57e2a7b6bb030ad38f924e126dc9e94a`)
-  // catch (error) {
-  //   console.error(error)
-  // }
+  `https://api.themoviedb.org/3/search/multi?language=en&query=${searchTerm}&api_key=57e2a7b6bb030ad38f924e126dc9e94a`)
+
   const searchElementData = await searchElement.json();
   const filteredResults = searchElementData.results.filter((item) => item.media_type !== "person");
 
@@ -124,20 +121,36 @@ async function searchList(searchTerm) {
   .map((movie) => searchResults(movie))
   .join("");
 
-  // search list html
+  //Poster path
 
-  function elementsListHTML(movie) {
+
+
+  // Movie Details 
+
+  function extractMovieDetails(movie) {
     let date = movie.release_date || movie.first_air_date;
     let releaseYear = new Date(date).getFullYear();
     let title = movie.title || movie.name;
-    let poster = "";
-
+    let poster =  ""
     if (movie.poster_path === null) {
       poster = "./assets/imgnotfound.jpg";
     } else {
       poster = ApiImageBase + movie.poster_path;
-    }
+    };
+  
+    return {
+      releaseYear: releaseYear,
+      title: title,
+      poster: poster
+    };
+  }
 
+
+  // SEARCH LIST HTML
+
+  function elementsListHTML(movie) {
+    const { releaseYear, title, poster } = extractMovieDetails(movie);
+   
     return `<div class="search__list--element" id=${movie.id} value="${movie.media_type}" onclick="getID(this)">
     <img src="${poster}" alt="" class="search__element--img">
     <div class="search__list--info">
@@ -147,17 +160,10 @@ async function searchList(searchTerm) {
     </div>`;
   }
 
-  function searchResults(movie) {
-    let date = movie.release_date || movie.first_air_date;
-    let releaseYear = new Date(date).getFullYear();
-    let title = movie.title || movie.name;
-    let poster = "";
+  // SEARCH RESULTS HTML  
 
-    if (movie.poster_path === null) {
-      poster = "./assets/imgnotfound.jpg";
-    } else {
-      poster = ApiImageBase + movie.poster_path;
-    }
+  function searchResults(movie) {
+    const { releaseYear, title, poster } = extractMovieDetails(movie);
 
     return `<div class="search__result" id=${movie.id} value="${movie.media_type}" onclick="getID(this)">
     <figure class="search__img--wrapper">
@@ -176,6 +182,25 @@ async function searchList(searchTerm) {
   }
 
 
+
+  let searchNoresults = document.querySelector(".search__no-results");
+  console.log(searchTerm.length)
+  if (filteredResults.length === 0 & searchTerm.length > 0 ) {
+    let searchTerm = document.getElementById("search__phrase").value.trim();
+    searchNoresults.innerHTML = `<div class="search__no-results--message"> Could not find any matches related to "${searchTerm}"</div>`;
+  } else{
+    searchNoresults.innerHTML = ``;
+  }
+
+  if(searchTerm.length === 0){
+    IDTrendingMovie = document.getElementById("trending__movies");
+    IDTrendingTV = document.getElementById("trending__shows");
+    const sectionSearchResults = document.getElementById("search__results")
+    IDTrendingMovie.classList.remove("hide");
+    IDTrendingTV.classList.remove("hide");
+    sectionSearchResults.classList.add("hide")
+  }
+
 }
 
 // get name from searchbox
@@ -185,6 +210,10 @@ function searchTerm() {
   hideList.classList.remove("hide");
   let searchTerm = document.getElementById("search__phrase").value.trim();
   searchList(searchTerm);
+ 
+
+
+
 }
 
 //search by ID API
@@ -216,7 +245,7 @@ async function APIDetails(ID, type) {
   <div class="modal__wrapper fade-in">
   <div class="modal__img--wrapper">
           <img src="https://image.tmdb.org/t/p/w500/${poster}" alt="" class="modal__img"/>
-          <div class="modal__ratings" ">${ratings}</div>
+          <div class="modal__ratings--wrapper"> <h2 class="modal__ratings">${ratings} </h3></div>
           </div>
           <div class="modal__content--wrapper">
           <div class="modal__info">
@@ -248,11 +277,31 @@ async function APIDetails(ID, type) {
       ratings.style.color = "red";
     }
 
-    const modalBackground = document.querySelector(".container__modal")
-    modalBackground.style.backgroundImage=`url(https://image.tmdb.org/t/p/original/${detailsData.backdrop_path})`;
+    
   }
 
   ratingsColor();
+
+    // MODAL BACKGROUND 
+
+  function setModalBackground(event) {
+    const modalBackground = document.querySelector(".container__modal")
+      let modalBackgroundImg = ""
+      if(screen.width < 768){
+        modalBackgroundImg = detailsData.poster_path;
+      }
+      else{
+        modalBackgroundImg = detailsData.backdrop_path
+      }
+      modalBackground.style.backgroundImage=`url(https://image.tmdb.org/t/p/original/${modalBackgroundImg})`;
+      console.log(modalBackgroundImg)
+  }
+
+  setModalBackground();
+
+  window.addEventListener("resize",  setModalBackground);
+
+  
 }
 
 //get id
@@ -320,7 +369,7 @@ function search(event){
   IDTrendingMovie.classList.add("hide");
   IDTrendingTV.classList.add("hide");
   searchList.classList.add("hide");
-  sectionSearchResults.classList.toggle('hide');
+  sectionSearchResults.classList.remove('hide');
 }
 
 // GET TO NEW PAGE 
@@ -330,6 +379,8 @@ function newPage (event){
   const newPage = event.target
   const newPageValue = newPage.getAttribute ("value");
   localStorage.setItem ("pageValue", newPageValue)
-
   window.location.href = `${window.location.origin}/movie_searcher/movies.html`
 }
+
+
+
