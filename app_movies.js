@@ -78,7 +78,9 @@ async function API(MovieSortByValue = "", olderDateValue = "1900-01-01", newerDa
 
   if (moviesTrendingData.results.length === 0) {
     moviesTrendingList.style.display = "none";
-    noResultsMessage.style.display = "block";
+    setTimeout(() => {
+      noResultsMessage.style.display = "block";
+    }, 300);
   } else {
 
     moviesTrendingList.style.display = "grid";
