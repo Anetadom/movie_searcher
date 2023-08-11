@@ -382,5 +382,10 @@ function newPage (event){
   window.location.href = `${window.location.origin}/movie_searcher/movies.html`
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  mainMovies();
+});
+
+
 
 

@@ -48,8 +48,10 @@ async function APIGenres (){
   
 
 
-// API zmiany
-async function API(MovieSortByValue, olderDateValue = "1900-01-01", newerDateValue = "9999-12-31") {
+// API 
+// async function API(MovieSortByValue = "", olderDateValue = "1900-01-01", newerDateValue = "9999-12-31", min = "0", max = "1") {
+async function API(MovieSortByValue = "", olderDateValue = "1900-01-01", newerDateValue = "9999-12-31", min = "0", max = "10") {
+   console.log(MovieSortByValue);
   const page = localStorage.getItem("pageValue");
   let olderDateType ="";
   let newerDateType ="";
@@ -64,11 +66,10 @@ async function API(MovieSortByValue, olderDateValue = "1900-01-01", newerDateVal
 
 
 
-
   const ApiKey = "&api_key=57e2a7b6bb030ad38f924e126dc9e94a";
   const ApiBase = `https://api.themoviedb.org/3/discover/${page}?`;
-  const APIMovieRatingDescURL = ApiBase + "sort_by=" + MovieSortByValue + "&vote_count.gte=500&with_genres=" + dataValuesGenre + olderDateType + olderDateValue + newerDateType + newerDateValue + ApiKey;
-
+  const APIMovieRatingDescURL = ApiBase + "vote_count.gte=50" + "&sort_by=" + MovieSortByValue + "&with_genres=" + dataValuesGenre + olderDateType + olderDateValue + newerDateType + newerDateValue  +"&vote_average.gte=" + min + "&vote_average.lte="+ max + ApiKey;
+  console.log(APIMovieRatingDescURL);
 
   const moviesTrending = await fetch(APIMovieRatingDescURL);
   const moviesTrendingData = await moviesTrending.json();
@@ -79,7 +80,7 @@ async function API(MovieSortByValue, olderDateValue = "1900-01-01", newerDateVal
     moviesTrendingList.style.display = "none";
     noResultsMessage.style.display = "block";
   } else {
-   
+
     moviesTrendingList.style.display = "grid";
     noResultsMessage.style.display = "none";
     moviesTrendingList.innerHTML = moviesTrendingData.results.map((movie) => moviesPage(movie)).join("");
@@ -136,6 +137,7 @@ async function APIDetails(ID) {
   const page = localStorage.getItem("pageValue")
   const details = await fetch(`https://api.themoviedb.org/3/${page}/${ID}?api_key=57e2a7b6bb030ad38f924e126dc9e94a`);
   detailsData = await (details.json());
+  console.log(detailsData);
   const genresList = detailsData.genres.map((genres) => genres.name).join(", ")
 
 
@@ -262,17 +264,43 @@ function rotate(){
 }
 
 
-// RANGE 
 
-function userScore(){
+
+document.addEventListener('DOMContentLoaded', function() {
+  function userScore(){
+    const leftdot = document.querySelector(".left__value");
+    const rightdot = document.querySelector(".right__value");
+    const leftValue = leftdot.value;
+    const rightValue = rightdot.value;
+    const rangeRatings = document.querySelector(".range__ratings--wrapper")
+    let minValue = Math.min( leftValue, rightValue );
+    let maxValue = Math.max( leftValue, rightValue );
+    const rangeSlide = document.querySelector(".range-selected");
+    rangeSlide.style.left = minValue * 10 + "%";
+    rangeSlide.style.right = 100 - (maxValue * 10) + "%";
+    let min = minValue || "0" 
+    let max = maxValue || "0" 
+    console.log(min)
+    rangeRatings.innerHTML = `
+    <div class="range__ratings">
+    ${min} - ${max} </div>`
+
+    let MovieSortByValue = "";  
+    let olderDateValue = "";   
+    let newerDateValue = ""; 
+
+    API(MovieSortByValue, olderDateValue, newerDateValue, min, max);
+  }
+
   const leftdot = document.querySelector(".left__value");
+  leftdot.addEventListener('input', userScore);
   const rightdot = document.querySelector(".right__value");
-  const leftValue = leftdot.value;
-  const rightValue = rightdot.value;
-  let minValue = Math.min( leftValue, rightValue )
-  let maxValue = Math.max( leftValue, rightValue )
-  const rangeSlide = document.querySelector(".range-selected")
-  rangeSlide.style.left = minValue * 10 + "%"
-  rangeSlide.style.right = 100 - (maxValue * 10) + "%"
-    rangeSlide.style.transition = "left 0.5s, right 0.5s";
- }
+  rightdot.addEventListener('input', userScore);
+
+  userScore();
+ 
+});
+
+
+
+

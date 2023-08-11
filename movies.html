@@ -1,168 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <script></script>
-    <title>Document</title>
-    <script src="./app_movies.js"></script>
-    <script
-      src="https://kit.fontawesome.com/e0d028b2fd.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
 
-  <body>
-    <nav>
-      <div class="row"></div>
-      <div class="nav__container">
-        <figure class="nav__logo--wrapper">
-          <a href="./index.html">
-            <h1 class="nav__logo--title">TOP MOVIES</h1></a
-          >
-        </figure>
-        <ul class="nav__links">
-          <li
-            class="nav__link nav__link--text"
-            value="movie"
-            onclick="newPage(event)"
-          >
-            Movies
-          </li>
-          <li
-            class="nav__link nav__link--text"
-            value="tv"
-            onclick="newPage(event)"
-          >
-            TV Shows
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <main>
-      <section id="filter">
-        <div class="container container__filter">
-          <div class="filter__list">
-            <div class="filter__icon--wrapper">
-              <h3 class="filter__icon--text">FILTER</h3>
-              <i
-                class="fa-solid fa-chevron-down"
-                onclick="rotate(); showFilterList();"
-              ></i>
-            </div>
-            <div class="filter__parameters">
-              <div class="filter__paramters--wrapper">
-                <div class="filter__wrapper">
-                  <p class="filter__title">Sort by</p>
-                  <select
-                    name="sort-by"
-                    id="sort-by"
-                    class="filter__sort-by"
-                    onchange="dateValue()"
-                  >
-                    <option
-                      class="filter__sort-by--option"
-                      disabled
-                      selected
-                      value
-                    >
-                      Sort by
-                    </option>
-                    <option
-                      class="filter__sort-by--option"
-                      value="vote_average.desc"
-                    >
-                      Rating Descending
-                    </option>
-                    <option
-                      class="filter__sort-by--option"
-                      value="vote_average.asc"
-                    >
-                      Rating Ascending
-                    </option>
-                    <option
-                      class="filter__sort-by--option"
-                      value="popularity.desc"
-                    >
-                      Popularity Descending
-                    </option>
-                    <option
-                      class="filter__sort-by--option"
-                      value="popularity.aesc"
-                    >
-                      Popularity Ascending
-                    </option>
-                    <option
-                      class="filter__sort-by--option"
-                      value="primary_release_date.desc"
-                    >
-                      Release Date
-                    </option>
-                    <option
-                      class="filter__sort-by--option"
-                      value="original_title.asc"
-                    >
-                      Title (A-Z)
-                    </option>
-                  </select>
-                </div>
-                <div class="filter__wrapper" onchange="dateValue()">
-                  <p class="filter__title">Release date</p>
-                  <p class="filter__subtitle">from</p>
-                  <input type="date" class="filter__data older" />
-                  <p class="filter__subtitle">to</p>
-                  <input type="date" class="filter__data newer" />
-                </div>
-                <div class="filter__wrapper">
-                  <p class="filter__title">User Score</p>
-                  <div class="range">
-                    <div class="range-slider">
-                      <span class="range-selected"></span>
-                    </div>
-                    <div class="range-input">
-                      <input
-                        type="range"
-                        class="left__value"
-                        min="0"
-                        max="10"
-                        step="0.1"
-                        onchange="userScore()"
-                      />
-                      <input
-                        type="range"
-                        class="right__value"
-                        min="0"
-                        max="10"
-                        step="0.1"
-                        onchange="userScore()"
-                      />
-                    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <script></script>
+  <title>Document</title>
+  <script src="./app_movies.js"></script>
+  <script src="https://kit.fontawesome.com/e0d028b2fd.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="row"></div>
+    <div class="nav__container">
+      <figure class="nav__logo--wrapper">
+        <a href="./index.html">
+          <h1 class="nav__logo--title">TOP MOVIES</h1>
+        </a>
+      </figure>
+      <ul class="nav__links">
+        <li class="nav__link nav__link--text" value="movie" onclick="newPage(event)">
+          Movies
+        </li>
+        <li class="nav__link nav__link--text" value="tv" onclick="newPage(event)">
+          TV Shows
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <section id="filter">
+      <div class="container container__filter">
+        <div class="filter__list">
+          <div class="filter__icon--wrapper">
+            <h3 class="filter__icon--text">FILTER</h3>
+            <i class="fa-solid fa-chevron-down" onclick="rotate(); showFilterList();"></i>
+          </div>
+          <div class="filter__parameters">
+            <div class="filter__paramters--wrapper">
+              <div class="filter__wrapper">
+                <p class="filter__title">Sort by</p>
+                <select name="sort-by" id="sort-by" class="filter__sort-by" onchange="dateValue()">
+                  <option class="filter__sort-by--option" disabled selected value>
+                    Sort by
+                  </option>
+                  <option class="filter__sort-by--option" value="vote_average.desc">
+                    Rating Descending
+                  </option>
+                  <option class="filter__sort-by--option" value="vote_average.asc">
+                    Rating Ascending
+                  </option>
+                  <option class="filter__sort-by--option" value="popularity.desc">
+                    Popularity Descending
+                  </option>
+                  <option class="filter__sort-by--option" value="popularity.aesc">
+                    Popularity Ascending
+                  </option>
+                  <option class="filter__sort-by--option" value="primary_release_date.desc">
+                    Release Date
+                  </option>
+                  <option class="filter__sort-by--option" value="original_title.asc">
+                    Title (A-Z)
+                  </option>
+                </select>
+              </div>
+              <div class="filter__wrapper" onchange="dateValue()">
+                <p class="filter__title">Release date</p>
+                <p class="filter__subtitle">from</p>
+                <input type="date" class="filter__data older" />
+                <p class="filter__subtitle">to</p>
+                <input type="date" class="filter__data newer" />
+              </div>
+              <div class="filter__wrapper">
+                <p class="filter__title">User Score</p>
+                <div class="range">
+                  <div class="range__ratings--wrapper">
+
                   </div>
-                </div>
-                <div class="filter__wrapper--last">
-                  <p class="filter__title">Genres</p>
-                  <ul
-                    id="with_genres"
-                    class="filter__genres text"
-                    name="with_genres[]"
-                    onload="collectDataValues()"
-                  ></ul>
+                  <div class="range-slider">
+                    <span class="range-selected"></span>
+                  </div>
+                  <div class="range-input">
+                    <input type="range" class="left__value" min="0" max="10" step="0.5" value="0" />
+                    <input type="range" class="right__value" min="0" max="10" step="0.5" value="10" />
+                  </div>
+
                 </div>
               </div>
+              <div class="filter__wrapper--last">
+                <p class="filter__title">Genres</p>
+                <ul id="with_genres" class="filter__genres text" name="with_genres[]" onload="collectDataValues()"></ul>
+              </div>
             </div>
-            <div class="results__wrapper" id="resultsWrapper"></div>
           </div>
         </div>
-        <div class="noresults__message">
-          <img
-            class="noresults__img"
-            src="./assets/nofound.png"
-            alt="Sorry No Results Found"
-          />
-        </div>
-      </section>
-      <section id="modal" class="hide"></section>
-    </main>
-  </body>
+        <div class="results__wrapper" id="resultsWrapper"></div>
+      </div>
+      <div class="noresults__message">
+        <img class="noresults__img" src="./assets/nofound.png" alt="Sorry No Results Found" />
+      </div>
+    </section>
+    <section id="modal" class="hide"></section>
+  </main>
+</body>
+
 </html>

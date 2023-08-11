@@ -91,11 +91,34 @@ NAV
 }
 
 .nav__link {
+    position: relative;
     font-size: 24px;
     font-weight: 900;
-    padding-left: 16px;
+    margin-left: 16px;
     cursor: pointer;
+    transition: all 400ms ease;
 }
+
+.nav__link:after {    
+    bottom: -2px;
+    content: "";
+    display: block;
+    height: 3px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: all 300ms ease 0s; 
+    width: 0;
+  }
+  .nav__link:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }
+
+  .nav__link:hover{
+    transform: scale(1.1);
+  }
+
 
 
 /* 
@@ -621,6 +644,7 @@ RANGE RAITINGS
     position: relative;
     background-color: #e1e9f6;
     border-radius: 2px;
+    margin-bottom: 10px;
   }
 
   .range-selected {
@@ -640,7 +664,7 @@ RANGE RAITINGS
     position: absolute;
     width: 100%;
     height: 5px;
-    top: -5px;
+    top: -15px;
     background: none;
     pointer-events: none;
     -webkit-appearance: none;
@@ -666,6 +690,22 @@ RANGE RAITINGS
     background-color: #fff;
     pointer-events: auto;
     -moz-appearance: none;
+  }
+  
+  .range__ratings{
+    font-size: 20px;
+    text-align: center;
+    width: 50%;
+    max-width: 100px;
+    padding: 8px ;
+    border: 2px solid #c1c1c7;
+  }
+
+  .range__ratings--wrapper{
+      width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom:  16px;
   }
 
 /* 
